@@ -41,6 +41,26 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('categorias.index')}}">CATEGORIAS</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('platillos.index')}}">PLATILLOS</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('reservaciones.index')}}">RESERVACIONES</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('pedidos.index')}}">PEDIDOS</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('restaurantes.index')}}">RESTAURANTE</a>
+                                </li>
                             @endif
 
                             @if (Route::has('register'))
