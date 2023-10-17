@@ -52,7 +52,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $platillo->nombre }}</td>
-											<td>{{ $platillo->categorias->nombre }}</td>
+											<td>{{ $platillo->categoria}}</td>
 											<td>{{ $platillo->precio }}</td>
 											<td>{{ $platillo->estado }}</td>
 											<td>{{ $platillo->stock }}</td>

@@ -1,5 +1,39 @@
 @extends('layouts.app')
+<script>
+    function formatPhoneNumber(input) {
+    // Elimina todos los caracteres no numéricos y guiones medios duplicados
+    var phoneNumber = input.value.replace(/[^\d-]/g, '').replace(/-+/g, '-');
 
+    // Asegúrate de que no haya más de 8 dígitos (incluyendo el guión)
+    if (phoneNumber.length > 9) {
+        phoneNumber = phoneNumber.substr(0, 9);
+    }
+
+    // Inserta un guión medio después del cuarto dígito si hay exactamente 4 dígitos
+    if (phoneNumber.length === 4 && phoneNumber.charAt(4) !== '-') {
+        phoneNumber = phoneNumber.substr(0, 4) + '-' + phoneNumber.substr(4);
+    }
+
+    // Inserta un guión medio después del cuarto dígito nuevamente si llegamos a 8 dígitos
+    if (phoneNumber.length === 8) {
+        phoneNumber = phoneNumber.substr(0, 4) + '-' + phoneNumber.substr(4);
+    }
+
+    // Establece el valor formateado de nuevo en el campo de entrada
+    input.value = phoneNumber;
+
+    // Asegura que se pueda borrar el guión medio con "Backspace"
+    input.onkeydown = function(e) {
+        if (e.keyCode === 8) {
+            if (phoneNumber.charAt(4) === '-') {
+                input.value = phoneNumber.substring(0, 4) + phoneNumber.substring(5);
+            }
+        }
+    };
+}
+
+</script>
+<link rel="stylesheet" href="{{asset('css/reg.css')}}">
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

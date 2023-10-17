@@ -75,8 +75,8 @@ class PlatilloController extends Controller
     public function edit($id)
     {
         $platillo = Platillo::find($id);
-
-        return view('platillo.edit', compact('platillo'));
+        $categorias=Categoria::pluck('nombre','id');
+        return view('platillo.edit', compact('platillo','categorias'));
     }
 
     /**
