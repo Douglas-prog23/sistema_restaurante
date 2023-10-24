@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Platillo;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categoria = Categoria::all();
+        $platillo = Platillo::all();
+
+        return view('home',['categorias'=>$categoria,
+        'platillos' => $platillo
+    
+    ]);
+       
     }
 }

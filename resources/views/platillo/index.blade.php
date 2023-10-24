@@ -56,7 +56,9 @@
 											<td>{{ $platillo->precio }}</td>
 											<td>{{ $platillo->estado }}</td>
 											<td>{{ $platillo->stock }}</td>
-											<td>{{ $platillo->imagen }}</td>
+											<td>
+                                                <img src="{{asset($platillo->imagen)}}" alt="{{ $platillo->title }}" class="img-fluid img-thumbnail" width="100px" height="100px">
+                                            </td>
 
                                             <td>
                                                 <form action="{{ route('platillos.destroy',$platillo->id) }}" method="POST">

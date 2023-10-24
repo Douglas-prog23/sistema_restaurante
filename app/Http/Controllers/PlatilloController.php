@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Categoria;
 use App\Models\Platillo;
 use Illuminate\Http\Request;
@@ -45,7 +46,18 @@ class PlatilloController extends Controller
      */
     public function store(Request $request)
     {
+        $newPost = new Platillo();
         request()->validate(Platillo::$rules);
+
+        if($request->hasFile('imagen')){
+           $file = $request->file('imagen');
+           $destionation ='img/featureds/';
+           $filename = time().'-'.$file->getClientOriginalName();
+           $upload=$file->move($destionation,$filename);
+           $newPost->imagen = $filename;
+
+          
+        }
 
         $platillo = Platillo::create($request->all());
 
