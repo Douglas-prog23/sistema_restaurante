@@ -27,10 +27,8 @@ class HomeController extends Controller
     {
         $categoria = Categoria::all();
         $platillo = Platillo::all();
-
         return view('home',['categorias'=>$categoria,
-        'platillos' => $platillo
-    
+        'platillos'=>$platillo
     ]);
        
     }
