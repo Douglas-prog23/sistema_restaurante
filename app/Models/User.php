@@ -47,9 +47,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function setPasswordAttribute($value) {
-        return $this->attributes['password'] = bcrypt($value);
-        }
+    // public function setPasswordAttribute($value) {
+    //     return $this->attributes['password'] = bcrypt($value);
+    //     }
     public function setTelephoneAttribute($value)
     {
         $this->attributes['telephone'] = str_replace('-', '', $value);

@@ -132,7 +132,7 @@ function togglePasswordVisibility() {
                                     </span>
                                 @enderror
                         </div>
-                        <input type="hidden" name="id_rol" value="2">
+                        <input type="hidden" name="id_rol" value="3">
                         {{-- /////////////////////////////////////////////////////// --}}
                         <input type="submit" class="btn signin" value="{{ __('Crear Cuenta') }}">
                         <span class="user-login">Ya tienes una Cuenta? Click aqui <a href="{{ route('login') }}">Iniciar Sesion</a></span>

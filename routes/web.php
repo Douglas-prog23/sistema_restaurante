@@ -32,11 +32,11 @@ use Illuminate\Support\Facades\Auth;
 //  return view('home');
 // });
 
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Route::resource('/home',HomeController::class)->names('home');
 
