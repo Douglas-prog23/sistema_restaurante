@@ -51,7 +51,9 @@ Route::resource('detalle-platillos',DetallePlatilloController::class);
 
 Route::resource('facturas',FacturaController::class);
 
+/////////////no necesaria
 Route::resource('ingredientes',IngredienteController::class);
+/////////////////////////////////
 
 Route::resource('mesa',MesaController::class);
 

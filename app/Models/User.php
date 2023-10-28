@@ -19,7 +19,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
+        'username',
         'email',
+        'id_rol',
+        'telephone',
         'password',
     ];
 
@@ -42,4 +46,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function setPasswordAttribute($value) {
+        return $this->attributes['password'] = bcrypt($value);
+        }
+    public function setTelephoneAttribute($value)
+    {
+        $this->attributes['telephone'] = str_replace('-', '', $value);
+    }
 }

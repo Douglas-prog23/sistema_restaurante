@@ -31,11 +31,119 @@
         }
     };
 }
+//////////////////////////////
+function togglePasswordVisibility() {
+    var passwordInputs = document.querySelectorAll(".toggle-password");
+    var showPasswordCheckbox = document.getElementById("mostrarClave");
 
+    if (showPasswordCheckbox.checked) {
+        passwordInputs.forEach(function(input) {
+            input.type = "text";
+        });
+    } else {
+        passwordInputs.forEach(function(input) {
+            input.type = "password";
+        });
+    }
+}
 </script>
 <link rel="stylesheet" href="{{asset('css/reg.css')}}">
 @section('content')
-<div class="container">
+<div class="form-bg" bis_skin_checked="1">
+    <div class="container" bis_skin_checked="1">
+        <div class="row align-items-center justify-content-center" bis_skin_checked="1">
+            <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8" bis_skin_checked="1">
+                <div class="form-container" bis_skin_checked="1">
+                    <h3 class="title">Crea una Cuenta</h3>
+                    {{-- ----------------------------------------------¡ --}}
+                    {{-- ------------FORMULARIO CREATE ------------------- --}}
+                    {{-- ---------------------------------------------- --}}
+                    <form class="form-horizontal" method="post" action="{{ route('register') }}">
+                        @csrf
+                        <div class="form-group" bis_skin_checked="1">
+                            <label>Nombre de Usuario*</label>
+                            <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Ejemplo: Juan2044" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                        <div class="form-group" bis_skin_checked="1">
+                            <label>Correo Electronico*</label>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="example@test.com" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                        <div class="form-group" bis_skin_checked="1">
+                            <label>Contraseña*</label>
+                            <input id="password" type="password" class="toggle-password form-control @error('password') is-invalid @enderror" placeholder="Escribe una contraseña" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                        <div class="form-group" bis_skin_checked="1">
+                            <label>Confirmar Contraseña*</label>
+                            <input id="password-confirm" type="password" class="form-control toggle-password" placeholder="Repite la contraseña" name="password_confirmation" required autocomplete="new-password">
+                        </div>
+                        <div class="form-group" id="check" bis_skin_checked="1">
+                            <label>Mostrar Contraseña</label>&nbsp;
+                            <input type="checkbox" id="mostrarClave" onchange="togglePasswordVisibility()">
+                        </div>
+                        {{-- ---------------------------------------------- --}}
+                        <h4 class="sub-title">Informacio Personal</h4>
+                        {{-- ---------------------------------------------- --}}
+                        <div class="form-group" bis_skin_checked="1">
+                            <label>Nombres*</label>
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Escribe tu nombre" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                        <div class="form-group" bis_skin_checked="1">
+                            <label>Apellidos*</label>
+                            <input id="name" type="text" class="form-control @error('lastname') is-invalid @enderror" placeholder="Escribe tu apellido" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+
+                            @error('lastname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        {{-- ----------------------------------------------- --}}
+                        <div class="form-group phone-no" bis_skin_checked="1">
+                            <label>Telefono*</label>
+                            <input type="text" class="form-control @error('telephone') is-invalid @enderror" placeholder="Ejemplo: 0948-0597" name="telephone" value="{{ old('telephone') }}" required autocomplete="telephone" oninput="formatPhoneNumber(this)">
+
+                                @error('telephone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                        <input type="hidden" name="id_rol" value="2">
+                        {{-- /////////////////////////////////////////////////////// --}}
+                        <input type="submit" class="btn signin" value="{{ __('Crear Cuenta') }}">
+                        <span class="user-login">Ya tienes una Cuenta? Click aqui <a href="{{ route('login') }}">Iniciar Sesion</a></span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- ////////////////////////////////////////////////// --}}
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -107,5 +215,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

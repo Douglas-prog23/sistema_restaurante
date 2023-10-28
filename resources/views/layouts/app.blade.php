@@ -20,7 +20,7 @@
 </head>
 <style>
     body{
-      background: url('');
+      background: url('https://raw.githubusercontent.com/Douglas-prog23/sistema_restaurante/main/public/img/backgroudApp.jpg');
     }
     .navbar, .dropdown-menu{
               background-color: rgba(0, 0, 0, 0.582); /* Fondo oscuro semitransparente */
@@ -51,6 +51,11 @@
               transform: scaleX(1); /* Al pasar el puntero, se anima el subrayado */
               transform-origin: bottom left;
           }
+          #card_title{
+            font-weight: bold;
+            color: white;
+            text-shadow:0 0 5px black ;
+          }
   </style>
 <body>
     <div id="app">
@@ -75,13 +80,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesion') }}</a>
                              
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 </li>
                             @endif
                         @else
@@ -116,7 +121,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar Sesión') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

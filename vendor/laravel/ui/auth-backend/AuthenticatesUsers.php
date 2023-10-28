@@ -83,9 +83,21 @@ trait AuthenticatesUsers
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->guard()->attempt(
-            $this->credentials($request), $request->boolean('remember')
-        );
+        // return $this->guard()->attempt(
+        //     $this->credentials($request), $request->boolean('remember')
+        // );
+
+        $username = $request->input('lognm'); // Obtener el valor del campo login
+    $password = $request->input('password');
+
+    // Intentar autenticar al usuario con correo electrónico o nombre de usuario
+    return $this->guard()->attempt(
+        ['email' => $username, 'password' => $password],
+        $request->filled('remember')
+    ) || $this->guard()->attempt(
+        ['username' => $username, 'password' => $password],
+        $request->filled('remember')
+    );
     }
 
     /**
@@ -154,7 +166,8 @@ trait AuthenticatesUsers
      */
     public function username()
     {
-        return 'email';
+        // return 'email';
+        return 'lognm';
     }
 
     /**

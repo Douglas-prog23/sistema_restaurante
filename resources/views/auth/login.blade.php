@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="{{asset('css/log.css')}}">
 @section('content')
 {{-- ---------------------------------------------- --}}
-<section class="h-100 gradient-form" style="background-color: #eee;">
+<section class="h-100 gradient-form" style="background-color: #11111156; -webkit-box-shadow:  1px 1px 5px 3px rgba(255, 255, 255, 0.2);
+box-shadow:  1px 1px 5px 3px rgba(255, 255, 255, 0.2);">
     <div class="container py-3 h-100"> <!-- Redujimos el padding vertical de py-5 a py-3 -->
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
@@ -25,8 +26,8 @@
                                     @csrf
                                     <p>Ingresa a tu Cuenta para continuar</p>
                                     <div class="form-floating mb-3"> <!-- Redujimos de mb-4 a mb-3 -->
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="email@example.com" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                @error('email')
+                                        <input id="lognm" type="text" class="form-control @error('lognm') is-invalid @enderror" placeholder="lognm@example.com" name="lognm" value="{{ old('lognm') }}" required autocomplete="lognm" autofocus>
+                                @error('lognm')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
