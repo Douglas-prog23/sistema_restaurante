@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DetallePedidoController;
+use App\Http\Controllers\DetallePlatilloController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\IngredienteController;
+use App\Http\Controllers\MesaController;
 use App\Http\Controllers\PlatilloController;
 use App\Http\Controllers\ReservacioneController;
 use App\Http\Controllers\RestauranteController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\RoleController;
 use App\Models\DetallePedido;
 use App\Models\DetallePlatillo;
 use App\Models\Mesa;
@@ -41,8 +45,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Route::resource('/home',HomeController::class)->names('home');
 
 //routas para la categorias
-
-Route::resource('categorias',CategoriaController::class);
+Route::group(['middleware'=>['auth', 'checkRole:1,2']], function(){
+    Route::resource('categorias',CategoriaController::class);
+    Route::resource('mesa',MesaController::class);
+    Route::resource('platillos',PlatilloController::class);
+    Route::resource('pedidos',PedidoController::class);
+    Route::resource('reservaciones',ReservacioneController::class);
+    Route::resource('restaurantes',RestauranteController::class);
+    Route::resource('roles',RoleController::class);
+});
 
 //rutas para los platillos
 Route::resource('detalle-pedidos',DetallePedidoController::class);
@@ -55,15 +66,4 @@ Route::resource('facturas',FacturaController::class);
 Route::resource('ingredientes',IngredienteController::class);
 /////////////////////////////////
 
-Route::resource('mesa',MesaController::class);
-
-Route::resource('platillos',PlatilloController::class);
-
-Route::resource('pedidos',PedidoController::class);
-
-Route::resource('reservaciones',ReservacioneController::class);
-
-Route::resource('restaurantes',RestauranteController::class);
-
-Route::resource('roles',RoleController::class);
 

@@ -1,0 +1,154 @@
+/******************************************
+    File Name: responsive.css
+/****************************************** */
+
+@media (max-width: 1120px) {
+    .hero h1 {
+        font-size: 3.5em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+}
+@media (max-width: 992px) {
+	.hero h1 {
+        font-size: 3.2em;
+    }
+	.footer-box-a, .footer-box-b, .footer-box-c, .footer-box-d{
+		margin-bottom:20px;
+	}
+
+}  
+@media (max-width: 768px) {
+	.hero {
+		background-size: inherit;
+	}
+	.hero h1 {
+		font-size: 50px;
+		line-height: 62px;
+	}
+	.block-title{
+		font-size: 34px;
+	}
+	.title-caption{
+		padding: 20px 10px;
+		line-height: 28px !important;
+	}
+	.offer-item img{
+		width: 15%;
+		margin: 0 auto;
+		float: none;
+	}
+	.offer-item .offer-price{
+		width: 65px;
+		height: 65px;
+		line-height: 65px;
+		font-size: 18px;
+		display:none;
+	}
+	.offer-item div{
+		width: 70%;
+		padding-left: 10px;
+		padding-right: 10px;
+		text-align:center;
+		margin:0 auto;
+		float:none;
+	}
+	.offer-item div h3{
+		font-size: 16px;
+	}
+	.fixed-menu .navbar-toggle{
+		top: 18px;
+	}
+	.navbar-brand > img {
+		max-width: 180px;
+	}
+	.tab-title-menu h2{
+		font-size:14px;
+	}
+	[class^="flaticon-"]::before, [class*=" flaticon-"]::before, [class^="flaticon-"]::after, [class*=" flaticon-"]::after {
+		font-size: 35px;
+	}
+	.tab-menu .slick-arrow.slick-prev{
+		position:absolute;
+		top: -36px;
+		background:#e75b1e url(../images/back.png) no-repeat center;
+		text-indent: -99999px;
+		border:none;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		background-position: 2px 4px;
+	}
+	.tab-menu .slick-arrow.slick-prev:hover{
+		background:#e75b1e url(../images/back_hover.png) no-repeat center;
+		background-position: 2px 4px;
+	}
+	.tab-menu .slick-arrow.slick-next{
+		position:absolute;
+		top: -36px;
+		right:0px;
+		background: #e75b1e url(../images/next.png) no-repeat center;
+		text-indent: -99999px;
+		border:none;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		background-position: 7px 4px;
+	}
+	.tab-menu .slick-arrow.slick-next:hover{
+		background:#e75b1e url(../images/next_hover.png) no-repeat center;
+		background-position: 7px 4px;
+	}
+	.sf-team{
+		margin-bottom:20px;
+	}
+	.blog-img-box {
+		float: none;
+		width: 100%;
+	}
+	.pricing-main p{
+		padding:0px 15px;
+		margin-bottom:15px;
+	}
+	
+	.blog-dit{
+		width: 100%;
+		padding: 10px 2% 0 2%;
+	}
+	.form-reservations-box{
+		width: 100%;
+	}
+	
+	.footer-box-a, .footer-box-b, .footer-box-c, .footer-box-d{
+		margin-bottom:20px;
+	}
+	.fixed-menu .main-menu nav li a{
+		padding: 10px 0px;
+	}
+}
+@media (max-width: 600px) {
+	
+}
+@media (max-width: 480px) {
+	.offer-item img{
+		width: 50%;
+	}
+	.offer-item .offer-price{
+		width: 65px;
+		height: 65px;
+		line-height: 65px;
+		font-size: 18px;
+		display:none;
+	}
+	.offer-item div{
+		width: 100%;
+		padding-left: 10px;
+		padding-right: 10px;
+		text-align: center;
+	}
+	.offer-item div h3{
+		font-size: 16px;
+	}
+}
