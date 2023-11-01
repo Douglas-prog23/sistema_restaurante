@@ -25,7 +25,7 @@
     @import url('https://fonts.cdnfonts.com/css/nautilus-pompilius');
 
     body{
-      background: url('https://raw.githubusercontent.com/levi1405/rest_img/main/wall_admin2%20(1).jpeg');
+      background: url('https://raw.githubusercontent.com/Douglas-prog23/sistema_restaurante/main/public/img/backgroudApp.jpg');
       background-attachment:fixed;
       background-size:cover;
     }
@@ -66,18 +66,13 @@
               transform: scaleX(1); /* Al pasar el puntero, se anima el subrayado */
               transform-origin: bottom left;
           }
-          #card_title{
-            font-weight: bold;
-            color: white;
-            text-shadow:0 0 5px black ;
-          }
 
   </style>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('admin') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{asset('https://raw.githubusercontent.com/levi1405/rest_img/main/new_images/Cupula_vreb.png')}}" alt=""  width="30%" >
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -108,25 +103,20 @@
                         @else
 
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('categorias.index')}}">CATEGORIAS</a>
+                        <a class="nav-link" href="#homee">HOME</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('platillos.index')}}">PLATILLOS</a>
+                        <a class="nav-link text-nowrap"href="#about">ACERCA DE</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('reservaciones.index')}}">RESERVACIONES</a>
+                        <a class="nav-link" href="#menu">MENÚ</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('pedidos.index')}}">PEDIDOS</a>
+                        <a class="nav-link" href="#reservation">RESERVACIONES</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('restaurantes.index')}}">RESTAURANTE</a>
+                        <a class="nav-link" href="#comenta">COMENTA</a>
                     </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -135,7 +125,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @if(auth()->user()->id_rol == 1 || auth()->user()->id_rol == 2)
-                                    <a class="dropdown-item" href="{{route('home')}}">Area Pública</a>
+                                    <a class="dropdown-item" href="{{route('admin')}}">Area Admin</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

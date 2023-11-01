@@ -1,7 +1,284 @@
 /******************************************
-    File Name: responsive.css
+File Name: responsive.css
 /****************************************** */
+/* //////////////////////////////// */
+ /* //////   ACERCA DE    /////// */
+/* //////////////////////////////// */
+nav{
+	-webkit-box-shadow:  1px 1px 5px 3px rgba(255, 255, 255, 0.2);
+	box-shadow:  1px 1px 5px 3px rgba(255, 255, 255, 0.2);
+}
+.container-1 {
+	font-family: Arial, sans-serif;
+}
+.container-1, .carr{
+	padding: 20px;
+	text-align: center;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.668);
+	text-shadow: -1px -1px 0 black,
+                1px -1px 0 black,
+                  -1px 1px 0 black,
+                  1px 1px 0 black;
+	-webkit-box-shadow:  1px 1px 5px 3px rgba(255, 255, 255, 0.2);
+	box-shadow:  1px 1px 5px 3px rgba(255, 255, 255, 0.2);
+}
+.carousel-caption{
+	padding-left: 0.5%;
+	padding-right: 0.5%;
+	background: rgba(0, 0, 0, 0.583);
+	width: 100%;
+	text-align: center;
+	right: auto !important;
+	left: auto !important;
+}
+.carr p{
+	font-size: 18px;
+}
+.container-1 em{
+	color: rgb(255, 140, 0);
+}
+.container-1 h2, .carr h2 {
+	font-size: 2.5em;
+	color: rgb(255, 153, 0);
+	font-family: 'Nautilus Pompilius', sans-serif;
+}
 
+.container-1 p {
+	font-size: 1.5em;
+	margin-bottom: 20px;
+}
+.restaurant-image {
+	width: 100%;
+	height: auto;
+	border: 5px solid white;
+}
+/* Efectos de revelado */
+.reveal {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 1s, transform 1s;
+}
+
+/* Activar efectos al desplazarse hacia arriba */
+.reveal.in-view {
+	opacity: 1;
+	transform: translateY(0);
+}
+/* //////////////////////////////// */
+/* ----   Carrousel Slider */
+.carr .carousel{
+	width: 70%;
+}
+/* //////////////////////////////// */
+/* ----   Menu de Imagenes */
+/* Estilos personalizados para la superposición de imágenes */
+.menu-t .col-md-4:hover{
+	-webkit-box-shadow:  1px 1px 5px 3px rgba(183, 251, 224, 0.286);
+	box-shadow:  1px 1px 5px 3px rgba(183, 251, 224, 0.286);
+}
+.menu-item {
+	position: relative;
+	overflow: hidden;
+}
+.menu-item img {
+	transition: transform 0.3s ease;
+}
+.menu-item:hover img {
+	transform: scale(1.1);
+
+}
+.menu-item .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+.menu-item:hover .overlay {
+	opacity: 1;
+}
+/* //////////////////////////////// */
+/* ----   BOTONN CON CHINGO CSS */
+#redirect-menu {
+	position: relative;
+	width: 11em;
+	height: 4em;
+	outline: none;
+	transition: 0.1s;
+	background-color: transparent;
+	border: none;
+	font-size: 13px;
+	font-weight: bold;
+	color: #ddebf0;
+  }
+  
+  #clip {
+	--color: #2761c3;
+	position: absolute;
+	top: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	border: 5px double var(--color);
+	box-shadow: inset 0px 0px 15px #195480;
+	-webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  }
+  
+  .arrow {
+	position: absolute;
+	transition: 0.2s;
+	background-color: #2761c3;
+	top: 35%;
+	width: 11%;
+	height: 30%;
+  }
+  
+  #leftArrow {
+	left: -13.5%;
+	-webkit-clip-path: polygon(100% 0, 100% 100%, 0 50%);
+  }
+  
+  #rightArrow {
+	-webkit-clip-path: polygon(100% 49%, 0 0, 0 100%);
+	left: 102%;
+  }
+  
+  button:hover #rightArrow {
+	background-color: #27c39f;
+	left: -15%;
+	animation: 0.6s ease-in-out both infinite alternate rightArrow8;
+  }
+  
+  button:hover #leftArrow {
+	background-color: #27c39f;
+	left: 103%;
+	animation: 0.6s ease-in-out both infinite alternate leftArrow8;
+  }
+  
+  .corner {
+	position: absolute;
+	width: 4em;
+	height: 4em;
+	background-color: #2761c3;
+	box-shadow: inset 1px 1px 8px #2781c3;
+	transform: scale(1) rotate(45deg);
+	transition: 0.2s;
+  }
+  
+  #rightTop {
+	top: -1.98em;
+	left: 91%;
+  }
+  
+  #leftTop {
+	top: -1.96em;
+	left: -3.0em;
+  }
+  
+  #leftBottom {
+	top: 2.10em;
+	left: -2.15em;
+  }
+  
+  #rightBottom {
+	top: 45%;
+	left: 88%;
+  }
+  
+  button:hover #leftTop {
+	animation: 0.1s ease-in-out 0.05s both changeColor8,
+	0.2s linear 0.4s both lightEffect8;
+  }
+  
+  button:hover #rightTop {
+	animation: 0.1s ease-in-out 0.15s both changeColor8,
+	0.2s linear 0.4s both lightEffect8;
+  }
+  
+  button:hover #rightBottom {
+	animation: 0.1s ease-in-out 0.25s both changeColor8,
+	0.2s linear 0.4s both lightEffect8;
+  }
+  
+  button:hover #leftBottom {
+	animation: 0.1s ease-in-out 0.35s both changeColor8,
+	0.2s linear 0.4s both lightEffect8;
+  }
+  
+  button:hover .corner {
+	transform: scale(1.25) rotate(45deg);
+  }
+  
+  button:hover #clip {
+	animation: 0.2s ease-in-out 0.55s both greenLight8;
+	--color: #27c39f;
+  }
+  
+  @keyframes changeColor8 {
+	from {
+	  background-color: #2781c3;
+	}
+  
+	to {
+	  background-color: #27c39f;
+	}
+  }
+  
+  @keyframes lightEffect8 {
+	from {
+	  box-shadow: 1px 1px 5px #27c39f;
+	}
+  
+	to {
+	  box-shadow: 0 0 2px #27c39f;
+	}
+  }
+  
+  @keyframes greenLight8 {
+	from {
+	}
+  
+	to {
+	  box-shadow: inset 0px 0px 32px #27c39f;
+	}
+  }
+  
+  @keyframes leftArrow8 {
+	from {
+	  transform: translate(0px);
+	}
+  
+	to {
+	  transform: translateX(10px);
+	}
+  }
+  
+  @keyframes rightArrow8 {
+	from {
+	  transform: translate(0px);
+	}
+  
+	to {
+	  transform: translateX(-10px);
+	}
+  }
+  
+  
+  
+  /* ----  FIN DE BOTONN CON CHINGO CSS */
+  /* //////////////////////////////// */
+
+/* //////////////////////////////// */
 @media (max-width: 1120px) {
     .hero h1 {
         font-size: 3.5em;
@@ -18,6 +295,18 @@
 	.footer-box-a, .footer-box-b, .footer-box-c, .footer-box-d{
 		margin-bottom:20px;
 	}
+	.carr .carousel{
+		width: 95%;
+	}
+	.navbar-brand img{
+		height: 45%;
+	}
+
+}  
+@media (max-width: 816px) {
+	.carousel-caption p{
+		display: none;
+	}
 
 }  
 @media (max-width: 768px) {
@@ -28,127 +317,11 @@
 		font-size: 50px;
 		line-height: 62px;
 	}
-	.block-title{
-		font-size: 34px;
+	.container-1 p {
+		font-size: 1.2em;
+		margin-bottom: 17px;
 	}
-	.title-caption{
-		padding: 20px 10px;
-		line-height: 28px !important;
-	}
-	.offer-item img{
-		width: 15%;
-		margin: 0 auto;
-		float: none;
-	}
-	.offer-item .offer-price{
-		width: 65px;
-		height: 65px;
-		line-height: 65px;
-		font-size: 18px;
-		display:none;
-	}
-	.offer-item div{
-		width: 70%;
-		padding-left: 10px;
-		padding-right: 10px;
-		text-align:center;
-		margin:0 auto;
-		float:none;
-	}
-	.offer-item div h3{
-		font-size: 16px;
-	}
-	.fixed-menu .navbar-toggle{
-		top: 18px;
-	}
-	.navbar-brand > img {
-		max-width: 180px;
-	}
-	.tab-title-menu h2{
-		font-size:14px;
-	}
-	[class^="flaticon-"]::before, [class*=" flaticon-"]::before, [class^="flaticon-"]::after, [class*=" flaticon-"]::after {
-		font-size: 35px;
-	}
-	.tab-menu .slick-arrow.slick-prev{
-		position:absolute;
-		top: -36px;
-		background:#e75b1e url(../images/back.png) no-repeat center;
-		text-indent: -99999px;
-		border:none;
-		width: 32px;
-		height: 32px;
-		border-radius: 50%;
-		background-position: 2px 4px;
-	}
-	.tab-menu .slick-arrow.slick-prev:hover{
-		background:#e75b1e url(../images/back_hover.png) no-repeat center;
-		background-position: 2px 4px;
-	}
-	.tab-menu .slick-arrow.slick-next{
-		position:absolute;
-		top: -36px;
-		right:0px;
-		background: #e75b1e url(../images/next.png) no-repeat center;
-		text-indent: -99999px;
-		border:none;
-		width: 32px;
-		height: 32px;
-		border-radius: 50%;
-		background-position: 7px 4px;
-	}
-	.tab-menu .slick-arrow.slick-next:hover{
-		background:#e75b1e url(../images/next_hover.png) no-repeat center;
-		background-position: 7px 4px;
-	}
-	.sf-team{
-		margin-bottom:20px;
-	}
-	.blog-img-box {
-		float: none;
-		width: 100%;
-	}
-	.pricing-main p{
-		padding:0px 15px;
-		margin-bottom:15px;
-	}
-	
-	.blog-dit{
-		width: 100%;
-		padding: 10px 2% 0 2%;
-	}
-	.form-reservations-box{
-		width: 100%;
-	}
-	
-	.footer-box-a, .footer-box-b, .footer-box-c, .footer-box-d{
-		margin-bottom:20px;
-	}
-	.fixed-menu .main-menu nav li a{
-		padding: 10px 0px;
-	}
-}
-@media (max-width: 600px) {
-	
-}
-@media (max-width: 480px) {
-	.offer-item img{
-		width: 50%;
-	}
-	.offer-item .offer-price{
-		width: 65px;
-		height: 65px;
-		line-height: 65px;
-		font-size: 18px;
-		display:none;
-	}
-	.offer-item div{
-		width: 100%;
-		padding-left: 10px;
-		padding-right: 10px;
-		text-align: center;
-	}
-	.offer-item div h3{
-		font-size: 16px;
+	.restaurant-image {
+		width: 80%;
 	}
 }

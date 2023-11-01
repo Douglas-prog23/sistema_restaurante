@@ -182,3 +182,37 @@ function TyperSetup() {
 }
 
 TyperSetup();
+
+
+/////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+///   Acerca de Efecto
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+function addRevealClass() {
+  const elements = document.querySelectorAll('.reveal');
+  elements.forEach((element) => {
+      if (isElementInViewport(element)) {
+          element.classList.add('in-view');
+      }
+  });
+}
+
+function isElementInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+// Agregar clase 'in-view' a los elementos al cargar o al desplazarse
+window.onload = addRevealClass;
+window.addEventListener('scroll', addRevealClass);
+
+// -----------------------------------------------
+// ------------CARROUSEL SLIDER----------------
+// -----------------------------------------------
+

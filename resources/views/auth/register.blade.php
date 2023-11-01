@@ -48,6 +48,25 @@ function togglePasswordVisibility() {
 }
 </script>
 <link rel="stylesheet" href="{{asset('css/reg.css')}}">
+<style>
+    @media (min-width: 1024px){
+        .form-bg .container {
+        width: 60% !important;
+    }
+    }
+    @media (min-width: 992px){
+        
+    .form-bg .container {
+        width: 750px !important;
+    }
+    }
+    
+    @media (min-width: 576px){
+     .col-sm-8{
+        width: auto !important;
+    }   
+    }
+</style>
 @section('content')
 <div class="form-bg" bis_skin_checked="1">
     <div class="container" bis_skin_checked="1">

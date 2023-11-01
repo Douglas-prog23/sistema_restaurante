@@ -53,6 +53,9 @@ Route::group(['middleware'=>['auth', 'checkRole:1,2']], function(){
     Route::resource('reservaciones',ReservacioneController::class);
     Route::resource('restaurantes',RestauranteController::class);
     Route::resource('roles',RoleController::class);
+    Route::get('/admin', function () {
+        return view('admin');
+       })->name('admin');
 });
 
 //rutas para los platillos
