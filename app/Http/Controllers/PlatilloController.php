@@ -46,23 +46,35 @@ class PlatilloController extends Controller
      */
     public function store(Request $request)
     {
-        $newPost = new Platillo();
+       
         request()->validate(Platillo::$rules);
 
-        if($request->hasFile('imagen')){
-           $file = $request->file('imagen');
-           $destionation ='img/featureds/';
-           $filename = time().'-'.$file->getClientOriginalName();
-           $upload=$file->move($destionation,$filename);
-           $newPost->imagen = $filename;
+      $platillo = Platillo::create($request->all());
 
-          
-        }
-
-        $platillo = Platillo::create($request->all());
-
+       if ($request->hasFile('imagen')) {
+        $file = $request->file('imagen');
+        $rutaguardarimg = 'img/imgen';
+        //obtenemos el nombre del archivo
+        $filename = time().'-'.$file->getClientOriginalExtension();
+        //indicamos donde queremos guardar la imagen y le asignamos un nombre al mismo
+        $guardarimg = $request->file('imagen')->move($rutaguardarimg, $filename);
+        $platillo['imagen']= $guardarimg;
+       }
+       $platillo->save();
+       
+      
+       
         return redirect()->route('platillos.index')
             ->with('success', 'Platillo created successfully.');
+
+            // if ($request->hasFile('imagen')) {
+            //     $file = $request->file('imagen');
+            //     $name = time().$file->getClientOriginalName();
+            //     $file->move(public_path().'/images/', $name);
+            //     $path = $file->storeAs('public/imagen',$name);
+            //     $platillo['imagen'] = $path;
+            //     }
+            //     $platillo->save();
     }
 
     /**
