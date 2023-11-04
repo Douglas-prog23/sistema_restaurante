@@ -217,39 +217,24 @@
         <p class="reveal">Te presentamos algunos de los platillos mas Recientes de nuestro menú</p>
         <div class="row">
             <!-- Ejemplo de plato 1 -->
-            <div class="col-md-4 mb-4">
-                <div class="menu-item">
-                    <img src="https://raw.githubusercontent.com/levi1405/rest_img/main/menu/menu-item-2.png" alt="Plato 1" class="img-fluid">
-                    <div class="overlay">
-                        <h3>Plato 1</h3>
-                        <p>Descripción del Plato 1</p>
-                        <p>Precio: $15.99</p>
-                    </div>
-                </div>
-            </div>
             
-            <!-- Ejemplo de plato 2 -->
+            @foreach ($platillos as $platillo)
             <div class="col-md-4 mb-4">
                 <div class="menu-item">
-                    <img src="https://raw.githubusercontent.com/levi1405/rest_img/main/menu/menu-item-3.png" width="100%" alt="Plato 2" class="img-fluid">
+                    <img src="{{asset($platillo->imagen)}}" alt="Plato 1" width="400" height="400">
                     <div class="overlay">
-                        <h3>Plato 2</h3>
-                        <p>Descripción del Plato 2</p>
-                        <p>Precio: $12.99</p>
+                        <h3>Plato:{{$platillo->nombre}}</h3>
+                        <p>Descripción del Plato 1</p>
+                        <p>Precio: ${{$platillo->precio}}</p>
                     </div>
                 </div>
             </div>
-            <!-- Ejemplo de plato 2 -->
-            <div class="col-md-4 mb-4">
-                <div class="menu-item">
-                    <img src="https://raw.githubusercontent.com/levi1405/rest_img/main/menu/plato1.jpg" width="100%" alt="Plato 2" class="img-fluid">
-                    <div class="overlay">
-                        <h3>Plato 2</h3>
-                        <p>Descripción del Plato 2</p>
-                        <p>Precio: $12.99</p>
-                    </div>
-                </div>
-            </div>
+
+            @if ($platillo->nombre == "carne guisada")
+                 @break;
+            @endif
+
+            @endforeach
 
             <!-- Agrega más ejemplos de platos aquí -->
         </div>
@@ -324,14 +309,17 @@
 
                     <div class="col-md-4 col-17 justify-content-center mb-5">
                         <div class="card m-auto" style="width: 18rem;">
-                            <img class="card-img-top" src="{{asset('img/Cupula.png')}}" alt="{{$imagenes->name}}">
+                            <img class="card-img-top" src="{{asset($imagenes->imagen)}}" alt="{{$imagenes->name}}" width="200" height="200">
                             <div class="card-body">
                                 <small class="card-txt-category">Categoria:{{$imagenes->category->nombre}}</small>
                                 <h5 class="card-title my-2">{{$imagenes->category->descripcion}}</h5>
                                 <div class="d-card-text">
-                                    dsdsdsssssssssssssssssssssssssssssssssssssssssssssssss
-                                    sddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                                    sdddddddddddddddddddddddddddddddddddddddddddddddddddds
+                                    Esta es una de las mejores categorias de este restaurante
+                                    tener en cuenta que para poder gozaar de esta categoria 
+                                    hay que tener una menbresia exclusiva de el restaurante
+                                    si aun no la tines dirijete al erente para que pueda darte mas
+                                    informacion sobre esto 
+                                    gracias.................
                                 </div> 
                                 <a href="#" class="post-link"><b>Leer mas</b></a>
                                 <hr>
