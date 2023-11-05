@@ -354,9 +354,6 @@
 
             <div class="row justify-content-center">
                 <div class="col-10">
-                    @php
-                        $primero = true;
-                    @endphp
                     <!-- Carta 1 -->
                     <div class="no-platillos-message" style="display: none;">
                         <p>No hay platillos en esta categoría.</p>
@@ -366,9 +363,6 @@
                             $categoria = \App\Models\Categoria::find($categoriaId);
                         @endphp
                         <div data-content id="{{ $categoria->nombre }}" class="active">
-                            @php
-                                $primero = false; // Desactivar el indicador de primer grupo después del primer grupo
-                            @endphp
                             <div class="row">
                                 @foreach ($platillosCategoria as $platillo)
                                     <div class="col-md-4 col-17 justify-content-center mb-5">

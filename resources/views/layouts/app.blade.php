@@ -12,8 +12,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css.map')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css.map')}}"> --}}
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -159,8 +159,8 @@
             @yield('content')
         </main>
     </div>
-    <script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{ asset('js/bootstrap.bundle.min.js.map')}}"></script>
+    {{-- <script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js.map')}}"></script> --}}
 </body>
 {{-- //////////////////////////////////////// --}}
 @include('layouts.footer')
