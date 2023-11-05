@@ -213,6 +213,7 @@ window.onload = addRevealClass;
 window.addEventListener('scroll', addRevealClass);
 
 // -----------------------------------------------
-// ------------CARROUSEL SLIDER----------------
+// ------------MENU TAB DE HOME----------------
 // -----------------------------------------------
+
 

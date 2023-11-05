@@ -11,11 +11,95 @@ nav{
 .container-1 {
 	font-family: Arial, sans-serif;
 }
+.container-2, .container-1, .carr{
+	background: rgba(0, 0, 0, 0.668);
+}
+/* /////// MENU PLATILLOS */
+.menu-container {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+}
+.menu-ct{
+	display: flex;
+	padding: 3%;
+}
+.menu-ct p, .no-platillos-message p{
+	margin-right: 2rem;
+	cursor: pointer;
+	color: white;
+	text-align: center;
+	text-shadow: -1px -1px 0 black,
+                1px -1px 0 black,
+                  -1px 1px 0 black,
+                  1px 1px 0 black;
+	transition: all 0.3s ease;
+	position: relative;
+}
+.menu-ct p:hover{
+	color: #ff7010;
+  }
+  .menu-ct p::before {
+	  content: '';
+	  position: absolute;
+	  width: 100%;
+	  height: 2px; /* Grosor del subrayado */
+	  bottom: 0;
+	  left: 0;
+	  background-color: #ff7010;
+	  transform: scaleX(0); /* Inicialmente, la animación comienza sin subrayado */
+	  transform-origin: bottom right;
+	  transition: transform 0.3s ease; /* Animación de 0.3 segundos */
+  }
+  .menu-ct p:hover::before {
+	  transform: scaleX(1); /* Al pasar el puntero, se anima el subrayado */
+	  transform-origin: bottom left;
+  }
+
+  .menu-ct p.active-category{
+	color: #ff7010;
+  }
+  .menu-ct p.active-category::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+  /* '''''''''''''''''''''''''''''''' */
+  /* '-'-'-'-'-VISIVILIDAD DE 
+  -'-'-'-'-''-'LAS SECCIONES DE MENU -'-' */
+  /* ------------------------------------- */
+  [data-content] {
+	display: none;
+}
+.active[data-content] {
+	display: block;
+}
+  /* ////// Botones de desplazamiento */
+  .scroll-button {
+    background: transparent;
+	color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+.scroll-button:hover{
+	color: #ff7010;
+}
+.scroll-button.left {
+    margin-right: 10px;
+}
+
+.scroll-button.right {
+    margin-left: 10px;
+}
+/* ///////// FIn botones desplazamiento */
 .container-1, .carr{
 	padding: 20px;
 	text-align: center;
 	color: #fff;
-	background: rgba(0, 0, 0, 0.668);
+	
 	text-shadow: -1px -1px 0 black,
                 1px -1px 0 black,
                   -1px 1px 0 black,
@@ -44,7 +128,7 @@ nav{
 	font-family: 'Nautilus Pompilius', sans-serif;
 }
 
-.container-1 p {
+.container-1 p, .container-2 p {
 	font-size: 1.5em;
 	margin-bottom: 20px;
 }
@@ -317,7 +401,7 @@ nav{
 		font-size: 50px;
 		line-height: 62px;
 	}
-	.container-1 p {
+	.container-1 p, .container-2 p {
 		font-size: 1.2em;
 		margin-bottom: 17px;
 	}

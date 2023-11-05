@@ -30,6 +30,12 @@ class HomeController extends Controller
         return view('home',['categorias'=>$categoria,
         'platillos'=>$platillo
     ]);
-       
+    }
+    public function menu(){
+        $categoria = Categoria::all();
+        $platillo = Platillo::all();
+        return view('menu',['categorias'=>$categoria,
+        'platillos'=>$platillo
+    ]);
     }
 }
