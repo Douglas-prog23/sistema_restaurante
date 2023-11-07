@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Create') }} Reservacione
+    {{ __('Create') }} Reservaciones
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Reservacione</span>
+                        <span class="card-title">{{ __('Create') }} Reservaciones</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('reservaciones.store') }}"  role="form" enctype="multipart/form-data">

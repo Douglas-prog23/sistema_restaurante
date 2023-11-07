@@ -43,7 +43,6 @@
 										<th>Estado</th>
 										<th>Stock</th>
 										<th>Imagen</th>
-
                                         <th></th>
                                     </tr>
                                 </thead>

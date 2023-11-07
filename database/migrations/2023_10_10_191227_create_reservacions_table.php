@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('id_cliente')->unsigned();
             $table->foreign('id_cliente')->references('id')->on('usuarios');
-            $table->bigInteger('id_mesa')->unsigned();
+            $table->bigInteger('id_mesa')->unsigned()->nullable();
             $table->foreign('id_mesa')->references('id')->on('mesas');
             $table->date('fecha');
             $table->integer('num_personas');
+            $table->string('ocasion',50);
+            $table->time('hora');
             $table->text('comentario');
-            $table->integer('time_estimado');
-            $table->string('estado');
+            $table->string('estado',50);
             $table->timestamps();
         });
     }

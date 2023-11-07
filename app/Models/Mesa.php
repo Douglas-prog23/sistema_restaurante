@@ -20,12 +20,22 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Mesa extends Model
 {
-    
-    static $rules = [
-		'num_mesa' => 'required',
-		'capacidad_max' => 'required',
-		'estado' => 'required',
-    ];
+  public static function storeRules()
+  {
+      return [
+          'num_mesa' => 'required|unique:mesas,num_mesa',
+          'capacidad_max' => 'required',
+          'estado' => 'required',
+      ];
+  }
+    public static function updateRules($id)
+    {
+        return [
+            'num_mesa' => 'required|unique:mesas,num_mesa,' . $id,
+            'capacidad_max' => 'required',
+            'estado' => 'required',
+        ];
+    }
 
     protected $perPage = 20;
 

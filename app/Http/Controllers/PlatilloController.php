@@ -46,8 +46,8 @@ class PlatilloController extends Controller
      */
     public function store(Request $request)
     {
-       
-        request()->validate(Platillo::$rules);
+        $request->validate(Platillo::storeRules());
+        // request()->validate(Platillo::$rules);
 
       $platillo = Platillo::create($request->all());
 
@@ -65,7 +65,7 @@ class PlatilloController extends Controller
       
        
         return redirect()->route('platillos.index')
-            ->with('success', 'Platillo created successfully.');
+            ->with('success', 'Platillo Creado Satisfactoriamente.');
 
             // if ($request->hasFile('imagen')) {
             //     $file = $request->file('imagen');
@@ -112,12 +112,13 @@ class PlatilloController extends Controller
      */
     public function update(Request $request, Platillo $platillo)
     {
-        request()->validate(Platillo::$rules);
+        $request->validate(Platillo::updateRules($platillo->id));
+        // request()->validate(Platillo::$rules);
 
         $platillo->update($request->all());
 
         return redirect()->route('platillos.index')
-            ->with('success', 'Platillo updated successfully');
+            ->with('success', 'Platillo Actualizado Satisfactoriamente');
     }
 
     /**
@@ -130,6 +131,6 @@ class PlatilloController extends Controller
         $platillo = Platillo::find($id)->delete();
 
         return redirect()->route('platillos.index')
-            ->with('success', 'Platillo deleted successfully');
+            ->with('success', 'Platillo Eliminado Satisfactoriamente');
     }
 }

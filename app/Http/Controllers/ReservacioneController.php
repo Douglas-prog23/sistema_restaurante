@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mesa;
 use App\Models\Reservacione;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +34,10 @@ class ReservacioneController extends Controller
     public function create()
     {
         $reservacione = new Reservacione();
-        return view('reservacione.create', compact('reservacione'));
+        // $users = User::all();
+        $users = User::where('id_rol', '3')->get(); //solo clientes xD
+        $mesas = Mesa::where('estado', 'Disponible')->get();
+        return view('reservacione.create', compact('reservacione','users','mesas'));
     }
 
     /**
@@ -47,8 +52,19 @@ class ReservacioneController extends Controller
 
         $reservacione = Reservacione::create($request->all());
 
-        return redirect()->route('reservaciones.index')
-            ->with('success', 'Reservacione created successfully.');
+        return redirect()->route('reservacione.index')
+            ->with('success', 'Reservacion Creada Exitosamente.');
+    }
+
+
+    public function storecli(Request $request)
+    {
+        request()->validate(Reservacione::$rules);
+
+    $reservacione = Reservacione::create($request->all());
+
+    return redirect()->route('home')
+            ->with('success', 'Reservacion Hecha Exitosamente.');
     }
 
     /**
@@ -73,8 +89,9 @@ class ReservacioneController extends Controller
     public function edit($id)
     {
         $reservacione = Reservacione::find($id);
-
-        return view('reservacione.edit', compact('reservacione'));
+        $users = User::all(); // Obtén todos los usuarios
+        $mesas = Mesa::where('estado', 'Disponible')->get();
+        return view('reservacione.edit', compact('reservacione','users','mesas'));
     }
 
     /**
@@ -86,6 +103,7 @@ class ReservacioneController extends Controller
      */
     public function update(Request $request, Reservacione $reservacione)
     {
+        
         request()->validate(Reservacione::$rules);
 
         $reservacione->update($request->all());

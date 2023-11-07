@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Mesa;
 use App\Models\Platillo;
 use Illuminate\Http\Request;
 

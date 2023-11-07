@@ -28,11 +28,12 @@ class Reservacione extends Model
     
     static $rules = [
 		'id_cliente' => 'required',
-		'id_mesa' => 'required',
-		'fecha' => 'required',
-		'num_personas' => 'required',
-		'comentario' => 'required',
-		'time_estimado' => 'required',
+		'id_mesa' => 'nullable',
+		'fecha' => 'required|date|after_or_equal:today',
+		'num_personas' => 'required|integer|min:1|max:10',
+		'ocasion' => 'required',
+		'comentario' => 'nullable|string',
+		'hora' => 'required|date_format:H:i|after_or_equal:08:00|before:20:00',
 		'estado' => 'required',
     ];
 
@@ -43,7 +44,7 @@ class Reservacione extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_cliente','id_mesa','fecha','num_personas','comentario','time_estimado','estado'];
+    protected $fillable = ['id_cliente','id_mesa','fecha','num_personas','ocasion','comentario','hora','estado'];
 
 
     /**
@@ -59,7 +60,7 @@ class Reservacione extends Model
      */
     public function usuario()
     {
-        return $this->hasOne('App\Models\Usuario', 'id', 'id_cliente');
+        return $this->hasOne('App\Models\User', 'id', 'id_cliente');
     }
     
 

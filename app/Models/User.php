@@ -54,4 +54,8 @@ class User extends Authenticatable
     {
         $this->attributes['telephone'] = str_replace('-', '', $value);
     }
+    public function rol(){
+        return $this->belongsTo('App\Models\Role', 'id_rol','id');
+    }
+    
 }

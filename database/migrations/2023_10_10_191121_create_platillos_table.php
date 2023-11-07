@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('platillos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             $table->bigInteger('categoria')->unsigned();
             $table->foreign('categoria')->references('id')->on('categorias');
             $table->double('precio');
-            // $table->bigInteger('detalle')->unsigned();
-            // $table->foreign('detalle')->references('id')->on('');
             $table->boolean('estado');
             $table->integer('stock');
             $table->string('imagen');
-
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

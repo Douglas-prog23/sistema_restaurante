@@ -62,7 +62,7 @@ class Pedido extends Model
      */
     public function usuario()
     {
-        return $this->hasOne('App\Models\Usuario', 'id', 'id_cliente');
+        return $this->hasOne('App\Models\User', 'id', 'id_cliente');
     }
     
 

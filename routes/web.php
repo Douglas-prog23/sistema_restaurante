@@ -42,13 +42,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/menu', [App\Http\Controllers\HomeController::class, 'menu'])->name('menu');
+Route::post('reservaciones', '\App\Http\Controllers\ReservacioneController@storecli')->name('storecli');
 
 //Route::resource('/home',HomeController::class)->names('home');
 
 //routas para la categorias
 Route::group(['middleware'=>['auth', 'checkRole:1,2']], function(){
     Route::resource('categorias',CategoriaController::class);
-    Route::resource('mesa',MesaController::class);
+    Route::resource('mesas',MesaController::class);
     Route::resource('platillos',PlatilloController::class);
     Route::resource('pedidos',PedidoController::class);
     Route::resource('reservaciones',ReservacioneController::class);

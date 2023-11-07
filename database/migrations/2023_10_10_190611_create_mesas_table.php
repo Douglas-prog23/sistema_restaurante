@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->id();
-            $table->integer('num_mesa');
+            $table->integer('num_mesa')->unique();;
             $table->integer('capacidad_max');
-            $table->boolean('estado');
+            $table->string('estado');
             $table->timestamps();
         });
     }

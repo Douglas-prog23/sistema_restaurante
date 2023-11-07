@@ -216,4 +216,61 @@ window.addEventListener('scroll', addRevealClass);
 // ------------MENU TAB DE HOME----------------
 // -----------------------------------------------
 
+// -----------------------------------------------
+// ------------RESERVACION MESA----------------
+// -----------------------------------------------
+document.getElementById('hora').addEventListener('input', function () {
+  const horaInput = this.value;
+  const horaMin = '08:00';
+  const horaMax = '20:00';
 
+  if (horaInput < horaMin || horaInput > horaMax) {
+      this.setCustomValidity('La hora debe estar entre 8:00 AM y 8:00 PM.');
+  } else {
+      this.setCustomValidity('');
+  }
+});
+
+// $(document).ready(function() {
+//   $('#reservacion-form').on('submit', function(e) {
+//       e.preventDefault(); // Evita el envío normal del formulario
+
+//       // Realiza una petición AJAX para guardar la reservación
+//       $.ajax({
+//           type: 'POST',
+//           url: $(this).attr('action'),
+//           data: $(this).serialize(),
+//           success: function(response) {
+//               // Muestra el mensaje de éxito
+//               $('#reservacion-success-message').val(response.success);
+//               $('#success-message').text(response.success).show();
+//           },
+//           error: function(response) {
+//               // Maneja los errores si es necesario
+//           }
+//       });
+//   });
+// });
+
+
+    // $(document).ready(function() {
+    //     // Captura el evento de envío del formulario
+    //     $("#reservacion-form").on("submit", function(event) {
+    //         event.preventDefault(); // Previene el envío tradicional del formulario
+
+    //         // Realiza la petición AJAX para enviar la reservación
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "{{ route('reservaciones.store') }}",
+    //             data: $(this).serialize(), // Serializa los datos del formulario
+    //             success: function(data) {
+    //                 // Muestra el mensaje de confirmación
+    //                 $("#mensaje-reservacion").show();
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 // Maneja errores si es necesario
+    //                 console.error(error);
+    //             }
+    //         });
+    //     });
+    // });

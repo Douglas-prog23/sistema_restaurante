@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('valor');
             $table->text('comentario');
             $table->bigInteger('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->foreign('id_usuario')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ class MesaController extends Controller
     {
         $mesas = Mesa::paginate();
 
-        return view('mesa.index', compact('mesas'))
+        return view('mesas.index', compact('mesas'))
             ->with('i', (request()->input('page', 1) - 1) * $mesas->perPage());
     }
 
@@ -32,7 +32,7 @@ class MesaController extends Controller
     public function create()
     {
         $mesa = new Mesa();
-        return view('mesa.create', compact('mesa'));
+        return view('mesas.create', compact('mesa'));
     }
 
     /**
@@ -43,7 +43,8 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Mesa::$rules);
+        $request->validate(Mesa::storeRules());
+        // request()->validate(Mesa::$rules);
 
         $mesa = Mesa::create($request->all());
 
@@ -61,7 +62,7 @@ class MesaController extends Controller
     {
         $mesa = Mesa::find($id);
 
-        return view('mesa.show', compact('mesa'));
+        return view('mesas.show', compact('mesa'));
     }
 
     /**
@@ -74,7 +75,7 @@ class MesaController extends Controller
     {
         $mesa = Mesa::find($id);
 
-        return view('mesa.edit', compact('mesa'));
+        return view('mesas.edit', compact('mesa'));
     }
 
     /**
@@ -86,7 +87,8 @@ class MesaController extends Controller
      */
     public function update(Request $request, Mesa $mesa)
     {
-        request()->validate(Mesa::$rules);
+        $request->validate(Mesa::updateRules($mesa->id));
+        // request()->validate(Mesa::$rules);
 
         $mesa->update($request->all());
 

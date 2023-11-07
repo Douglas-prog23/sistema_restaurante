@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $estado
  * @property $stock
  * @property $imagen
+ * @property $descripcion
  * @property $created_at
  * @property $updated_at
  *
@@ -25,15 +26,38 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Platillo extends Model
 {
-    
-    static $rules = [
-		'nombre' => 'required',
+    // static $rules = [
+	// 	'nombre' => 'required',
+	// 	'categoria' => 'required',
+	// 	'precio' => 'required',
+	// 	'estado' => 'required',
+	// 	'stock' => 'required',
+	// 	'imagen' => 'required',
+    // ];
+    public static function storeRules()
+    {
+        return [
+            'nombre' => 'required|unique:platillos,nombre',
 		'categoria' => 'required',
 		'precio' => 'required',
 		'estado' => 'required',
 		'stock' => 'required',
 		'imagen' => 'required',
-    ];
+		'descripcion' => 'required',
+        ];
+    }
+      public static function updateRules($id)
+      {
+          return [
+            'nombre' => 'required|unique:platillos,nombre'. $id,
+		'categoria' => 'required',
+		'precio' => 'required',
+		'estado' => 'required',
+		'stock' => 'required',
+		'imagen' => 'required',
+		'descripcion' => 'required',
+          ];
+      }
 
     protected $perPage = 20;
 
@@ -42,7 +66,7 @@ class Platillo extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','categoria','precio','estado','stock','imagen'];
+    protected $fillable = ['nombre','categoria','precio','estado','stock','imagen','descripcion'];
 
 
     /**

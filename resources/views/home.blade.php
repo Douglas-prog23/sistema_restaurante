@@ -107,7 +107,7 @@
         <div class="hero" id="homee">
             <div class="subhero">
                 <h3>Hola {{ auth()->user()->name ?? auth()->user()->username }}</h3>
-                <h1>¡Bienvenidos a La Cúpula Gourmet!</h1>
+                <h1>¡Bienvenidos a {{ $infoRestaurante->nombre }}!</h1>
                 <h1>Cena con tu<span class="typer" id="some-id" data-delay="200" data-delim=":"
                         data-words="s Amigos: Familia:s Compañeros" data-colors="orange"></span><span class="cursor"
                         data-cursorDisplay="_" data-owner="some-id"></span></h1>
@@ -123,7 +123,8 @@
                 <!-- Columna para el texto -->
                 <div class="col-md-8">
                     <h2 class="reveal">Acerca de <br> Nosotros</h2>
-                    <p class="reveal">En el restaurante <em>"La Cúpula Gourmet"</em>, nuestra pasión por la comida es evidente
+                    <p class="reveal">En el restaurante <em>"{{ $infoRestaurante->nombre }}"</em>, nuestra pasión por la comida
+                        es evidente
                         en cada plato que servimos. Hemos estado sirviendo a la comunidad desde "2017" y nos enorgullece ser
                         parte de esta hermosa ciudad.</p>
                     <p class="reveal">Nuestro talentoso equipo de cocina, liderado por el chef <em>"Auguste Gusteau"</em>,
@@ -171,7 +172,7 @@
                             <div class="carousel-caption d-md-block">
 
                                 <h4>Elegancia la de Francia xD</h4>
-                                <p>Bienvenido a <em>Cupula Gourmet</em>,
+                                <p>Bienvenido a <em>{{ $infoRestaurante->nombre }}</em>,
                                     donde la pasión por la cocina se encuentra con la hospitalidad excepcional. Con un equipo de
                                     profesionales dedicados a satisfacer las necesidades y deseos de los clientes</p>
                             </div>
@@ -464,5 +465,80 @@
         </div>
     </div>
 </div>
+{{-- /////////////////////////////////////////////////////////////////// --}}
+{{-- <input style="font-weight: bold;" type="text" class="form-control" id="nombre" value="{{ Auth::user()->name }}" readonly> --}}
+{{-- ////////////////////////FORMULARIO RESERVACION//////////////////// --}}
+<div class="container container-1" id="reservacion">
+    <div class="row justify-content-center">
+        <h2>Solicita tu reservación</h2>
+        <div class="col-md-6">
+            <form id="reservacion-form" method="POST" action="#{{-- {{ route('storecli') }} --}}">
+                @csrf
+                <div class="form-group col-md-2">
+                    <label for="id_cliente">ID Cliente</label>
+                    <input type="text" class="form-control" id="id_cliente" name="id_cliente"
+                        value="{{ Auth::id() }}" readonly>
+                </div>
+                <div class="row" >
+                    <div class="form-group col-md-6">
+                        <label for="nombre">Nombre</label>
+                        <input style="font-weight: bold;" type="text" class="form-control" id="nombre" value="{{ Auth::user()->name }}" readonly>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="apellido">Apellido</label>
+                        <input style="font-weight: bold;" type="text" class="form-control" id="apellido" value="{{ Auth::user()->lastname }}" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="num_personas">Número de Personas</label>
+                        <select class="form-control" id="num_personas" name="num_personas">
+                            @for ($i = 1; $i <= 10; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha"
+                            min="{{ now()->format('Y-m-d') }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="hora">Hora</label>
+                        <input type="time" class="form-control" id="hora" name="hora" {{-- min="08:00" max="20:00" --}}  >
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ocasion">Ocasión</label>
+                        <select class="form-control" id="ocasion" name="ocasion">
+                            <option disabled selected>Seleccione Ocasión</option>
+                            <option value="Cumpleaños">Cumpleaños</option>
+                            <option value="Aniversario">Aniversario</option>
+                            <option value="Reunión">Reunión</option>
+                            <option value="Otra Ocasión">Otra Ocasión</option>
+                            <option value="Celebración Especial">Celebración Especial</option>
+                            <option value="Evento Familiar">Evento Familiar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comentario">Comentario</label>
+                    <textarea class="form-control" id="comentario" name="comentario" rows="3" placeholder="Especifique detalles que desee añadir"></textarea>
+                </div>
+                <input type="hidden" name="estado" id="estado" value="Pendiente">
+
+                <input type="hidden" id="reservacion-success-message" value="">
+                <div id="success-message" class="alert alert-success" style="display: none;"></div>
+                <br>
+                <button type="submit" class="btn btn-primary">Guardar Reservación</button>
+            </form>
+            {{-- <div id="mensaje-reservacion" style="display: none" class="alert alert-success mt-3">
+                Reservación exitosa.
+            </div> --}}
+        </div>
+    </div>
+</div>
+
 <script src="{{ asset('js/home.js') }}"></script>
 @endsection
