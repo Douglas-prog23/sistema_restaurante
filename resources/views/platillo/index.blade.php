@@ -21,6 +21,12 @@
                                   {{ __('Nuevo Platillo') }}
                                 </a>
                               </div>
+                              {{-- //boton para generar un reporte --}}
+                              <div class="float-right">
+                                <a href="{{ route('reporte') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Generar Reporte') }}
+                                </a>
+                              </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))

@@ -21,6 +21,12 @@
                                   {{ __('Nueva Reservacion') }}
                                 </a>
                               </div>
+                              {{-- boton para generar reporte  --}}
+                              <div class="float-right">
+                                <a href="{{ route('reporte2') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Generar Reporte') }}
+                                </a>
+                              </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
