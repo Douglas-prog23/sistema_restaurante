@@ -36,6 +36,12 @@ use Illuminate\Support\Facades\Auth;
 //  return view('home');
 // });
 
+//rutas de los reportes
+Route::get('reporte','\App\Http\Controllers\ReportController@reporteUno')->name('reporte');
+Route::get('reporte','\App\Http\Controllers\ReportController@reporteDos')->name('reporte');
+Route::get('reporte','\App\Http\Controllers\ReportController@reporteTres')->name('reporte');
+//
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
