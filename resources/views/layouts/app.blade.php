@@ -124,8 +124,10 @@
                             @endif
                         @endguest
                         @auth
-                            </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link text-nowrap" href="{{ route('categorias.index') }}">CREAR USUARIO</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('categorias.index') }}">CATEGORIAS</a>
                             </li>

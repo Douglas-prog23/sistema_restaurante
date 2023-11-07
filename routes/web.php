@@ -48,6 +48,7 @@ Route::post('reservaciones', '\App\Http\Controllers\ReservacioneController@store
 
 //routas para la categorias
 Route::group(['middleware'=>['auth', 'checkRole:1,2']], function(){
+    Route::get('admin/register', '\App\Http\Controllers\Auth\RegistertwoController@showRegistrationForm')->name('registertwo');
     Route::resource('categorias',CategoriaController::class);
     Route::resource('mesas',MesaController::class);
     Route::resource('platillos',PlatilloController::class);

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('met_pago');
             $table->bigInteger('id_cliente')->unsigned();
-            $table->foreign('id_cliente')->references('id')->on('usuarios');
+            $table->foreign('id_cliente')->references('id')->on('users');
             // $table->bigInteger('detalle_pedido')->unsigned();
             // $table->foreign('detalle_pedido')->references('id')->on('detalle_pedidos');
             $table->date('fecha');

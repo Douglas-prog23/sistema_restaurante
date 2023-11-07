@@ -52,7 +52,7 @@ class ReservacioneController extends Controller
 
         $reservacione = Reservacione::create($request->all());
 
-        return redirect()->route('reservacione.index')
+        return redirect()->route('reservaciones.index')
             ->with('success', 'Reservacion Creada Exitosamente.');
     }
 
