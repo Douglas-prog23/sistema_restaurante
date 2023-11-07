@@ -63,8 +63,7 @@ class ReservacioneController extends Controller
 
     $reservacione = Reservacione::create($request->all());
 
-    return redirect()->route('home')
-            ->with('success', 'Reservacion Hecha Exitosamente.');
+    return response()->json(['success' => 'Reservación Creada Exitosamente.']);
     }
 
     /**

@@ -472,7 +472,7 @@
     <div class="row justify-content-center">
         <h2>Solicita tu reservación</h2>
         <div class="col-md-6">
-            <form id="reservacion-form" method="POST" action="#{{-- {{ route('storecli') }} --}}">
+            <form id="reservacion-form" method="POST" action="{{ route('storecli') }}">
                 @csrf
                 <div class="form-group col-md-2">
                     <label for="id_cliente">ID Cliente</label>
@@ -529,7 +529,7 @@
                 <input type="hidden" name="estado" id="estado" value="Pendiente">
 
                 <input type="hidden" id="reservacion-success-message" value="">
-                <div id="success-message" class="alert alert-success" style="display: none;"></div>
+                <div id="success-message" class="alert alert-success" style="display: none;color: white;"></div>
                 <br>
                 <button type="submit" class="btn btn-primary">Guardar Reservación</button>
             </form>

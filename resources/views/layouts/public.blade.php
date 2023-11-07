@@ -120,20 +120,20 @@
                         @auth
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#homee">HOME</a>
+                                <a class="nav-link" href="{{ route('home') }}#homee">HOME</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-nowrap"href="#about">ACERCA DE</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#menu">MENÚ</a>
+                                <a class="nav-link" href="{{ route('home') }}#menu">MENÚ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#reservation">RESERVACIONES</a>
+                                <a class="nav-link" href="{{ route('home') }}#reservacion">RESERVACIONES</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="#comenta">COMENTA</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

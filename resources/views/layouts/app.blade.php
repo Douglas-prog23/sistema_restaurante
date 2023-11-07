@@ -126,7 +126,7 @@
                         @auth
 
                             <li class="nav-item">
-                                <a class="nav-link text-nowrap" href="{{ route('categorias.index') }}">CREAR USUARIO</a>
+                                <a class="nav-link text-nowrap" href="{{ route('usuario.index') }}">USUARIOS</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('categorias.index') }}">CATEGORIAS</a>

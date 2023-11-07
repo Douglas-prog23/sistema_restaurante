@@ -231,26 +231,26 @@ document.getElementById('hora').addEventListener('input', function () {
   }
 });
 
-// $(document).ready(function() {
-//   $('#reservacion-form').on('submit', function(e) {
-//       e.preventDefault(); // Evita el envío normal del formulario
+$(document).ready(function() {
+  $('#reservacion-form').on('submit', function(e) {
+      e.preventDefault(); // Evita el envío normal del formulario
 
-//       // Realiza una petición AJAX para guardar la reservación
-//       $.ajax({
-//           type: 'POST',
-//           url: $(this).attr('action'),
-//           data: $(this).serialize(),
-//           success: function(response) {
-//               // Muestra el mensaje de éxito
-//               $('#reservacion-success-message').val(response.success);
-//               $('#success-message').text(response.success).show();
-//           },
-//           error: function(response) {
-//               // Maneja los errores si es necesario
-//           }
-//       });
-//   });
-// });
+      // Realiza una petición AJAX para guardar la reservación
+      $.ajax({
+          type: 'POST',
+          url: $(this).attr('action'),
+          data: $(this).serialize(),
+          success: function(response) {
+              // Muestra el mensaje de éxito
+              $('#reservacion-success-message').val(response.success);
+              $('#success-message').text(response.success).show();
+          },
+          error: function(response) {
+              // Maneja los errores si es necesario
+          }
+      });
+  });
+});
 
 
     // $(document).ready(function() {

@@ -30,7 +30,7 @@
       <div class="footer-right col-md-4 col-sm-6">
         <h2><span><img src="{{asset('img/Cupula.png')}}" alt="logo" width="50%"></span></h2>
         <p class="menu">
-          <a href="{{ route('home') }}#home"> Home</a> |
+          <a href="{{ route('home') }}#homee"> Home</a> |
           <a href="{{ route('home') }}#about"> Acerca de</a> |
           <a href="{{ route('home') }}#reservacion"> Reservacion</a> |
           <a href="{{ route('home') }}#menu"> Menu</a> |
