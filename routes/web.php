@@ -37,9 +37,9 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 //rutas de los reportes
-Route::get('reporte','\App\Http\Controllers\ReportController@reporteUno')->name('reporte');
-Route::get('reporte','\App\Http\Controllers\ReportController@reporteDos')->name('reporte');
-Route::get('reporte','\App\Http\Controllers\ReportController@reporteTres')->name('reporte');
+Route::get('reporte', [App\Http\Controllers\ReportController::class, 'reporteUno'])->name('reporte');
+Route::get('reporte.reporte2', [App\Http\Controllers\ReportController::class, 'reporteDos'])->name('reporte2');
+Route::get('reporte.reporte3', [App\Http\Controllers\ReportController::class, 'reporteTres'])->name('reporte3');
 //
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);

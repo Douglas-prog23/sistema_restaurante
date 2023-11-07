@@ -24,7 +24,7 @@
         </style>
     </head> 
 <body>
-<h1 align="center">Listado de resrevaciones</h1>
+<h1 align="center">Listado de reservaciones</h1>
     <hr><br>
     <table>                                       
     <tr>
