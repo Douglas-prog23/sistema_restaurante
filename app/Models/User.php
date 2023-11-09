@@ -57,5 +57,8 @@ class User extends Authenticatable
     public function rol(){
         return $this->belongsTo('App\Models\Role', 'id_rol','id');
     }
-    
+    public function pedidos()
+    {
+        return $this->belongsTo('App\Models\Pedido', 'id_cliente', 'id');
+    }
 }

@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->string('met_pago');
+            $table->string('codigo',10)->unique();
             $table->bigInteger('id_cliente')->unsigned();
+            $table->string('direccion');
             $table->foreign('id_cliente')->references('id')->on('users');
-            // $table->bigInteger('detalle_pedido')->unsigned();
-            // $table->foreign('detalle_pedido')->references('id')->on('detalle_pedidos');
-            $table->date('fecha');
-            $table->string('estado');
+            $table->decimal('total',7,2);
+            // --solo si esta seguro que esas son las que llebara la columna
+            $table->enum('estado', ['pendiente', 'procesando', 'enviado', 'entregado']);
             $table->timestamps();
         });
     }

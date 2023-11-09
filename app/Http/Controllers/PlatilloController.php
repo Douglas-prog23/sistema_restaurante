@@ -113,12 +113,19 @@ class PlatilloController extends Controller
     public function update(Request $request, Platillo $platillo)
     {
         $request->validate(Platillo::updateRules($platillo->id));
-        // request()->validate(Platillo::$rules);
-
         $platillo->update($request->all());
 
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $rutaguardarimg = 'img/imgen';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $guardarimg = $request->file('imagen')->move($rutaguardarimg, $filename);
+            $platillo->imagen = $guardarimg;
+            $platillo->save();
+        }
+    
         return redirect()->route('platillos.index')
-            ->with('success', 'Platillo Actualizado Satisfactoriamente');
+            ->with('success', 'Platillo Actualizado Satisfactoriamente.');
     }
 
     /**

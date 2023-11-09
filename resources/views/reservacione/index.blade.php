@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Reservacione
+    Reservaciones
 @endsection
 
 @section('content')
@@ -44,12 +44,12 @@
                                         <th>No</th>
                                         
 										<th>Id Cliente</th>
-										<th>Id Mesa</th>
+										<th>Mesa #</th>
 										<th>Fecha</th>
 										<th>Num Personas</th>
                                         <th>Ocasión</th>
 										<th>Hora</th>
-										<th>Comentario</th>
+										{{-- <th>Comentario</th> --}}
 										<th>Estado</th>
                                         <th></th>
                                     </tr>
@@ -59,13 +59,13 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $reservacione->id_cliente }}</td>
-											<td>{{ $reservacione->id_mesa }}</td>
+											<td>{{ $reservacione->usuario->name }}</td>
+											<td>{{ $reservacione->mesa->num_mesa }}</td>
 											<td>{{ $reservacione->fecha }}</td>
 											<td>{{ $reservacione->num_personas }}</td>
 											<td>{{ $reservacione->ocasion }}</td>
 											<td>{{ $reservacione->hora }}</td>
-											<td>{{ $reservacione->comentario }}</td>
+											{{-- <td>{{ $reservacione->comentario }}</td> --}}
 											<td>{{ $reservacione->estado }}</td>
                                             <td>
                                                 <form action="{{ route('reservaciones.destroy',$reservacione->id) }}" method="POST">

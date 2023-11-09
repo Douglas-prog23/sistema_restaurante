@@ -22,11 +22,11 @@
                         
                         <div class="form-group">
                             <strong>Id Cliente:</strong>
-                            {{ $reservacione->id_cliente }}
+                            {{ $reservacione->usuario->name }}
                         </div>
                         <div class="form-group">
                             <strong>Id Mesa:</strong>
-                            {{ $reservacione->id_mesa }}
+                            {{ $reservacione->mesa->num_mesa }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha:</strong>

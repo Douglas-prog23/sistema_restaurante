@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property $total
  * @property $created_at
  * @property $updated_at
- *
  * @property Pedido $pedido
  * @property Platillo $platillo
  * @package App

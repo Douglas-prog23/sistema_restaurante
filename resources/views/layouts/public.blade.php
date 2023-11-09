@@ -25,7 +25,7 @@
     @import url('https://fonts.cdnfonts.com/css/nautilus-pompilius');
 
     body {
-        background: url('https://raw.githubusercontent.com/Douglas-prog23/sistema_restaurante/main/public/img/backgroudApp.jpg');
+        background: url('https://raw.githubusercontent.com/Douglas-prog23/sistema_restaurante/main/public/img/backgroudApp%20(1)%20(1).jpg');
         background-attachment: fixed;
         background-size: cover;
     }

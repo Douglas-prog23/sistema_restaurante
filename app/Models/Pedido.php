@@ -25,10 +25,10 @@ class Pedido extends Model
 {
     
     static $rules = [
-		'met_pago' => 'required',
-		'id_cliente' => 'required',
-		'fecha' => 'required',
-		'estado' => 'required',
+		'codigo' => 'required',
+		'id_cliente' => 'required|exists:users,id',
+		'total' => 'required',
+		'estado' => 'required|string',
     ];
 
     protected $perPage = 20;
@@ -38,7 +38,7 @@ class Pedido extends Model
      *
      * @var array
      */
-    protected $fillable = ['met_pago','id_cliente','fecha','estado'];
+    protected $fillable = ['codigo','id_cliente','total','estado'];
 
 
     /**

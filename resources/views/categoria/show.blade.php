@@ -28,14 +28,6 @@
                             <strong>Descripcion:</strong>
                             {{ $categoria->descripcion }}
                         </div>
-                        <div class="form-group">
-                            <strong>Slug:</strong>
-                            {{ $categoria->slug }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Imagen:</strong>
-                            {{ $categoria->imagen }}
-                        </div>
 
                     </div>
                 </div>

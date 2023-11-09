@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Categoria:</strong>
-                            {{ $platillo->categoria }}
+                            {{ $platillo->category->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Precio:</strong>
@@ -34,7 +34,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $platillo->estado }}
+                            @if ($platillo->estado == 1)
+                                                    Activo
+                                                @else
+                                                    Inactivo
+                                                @endif
                         </div>
                         <div class="form-group">
                             <strong>Stock:</strong>
@@ -43,6 +47,10 @@
                         <div class="form-group">
                             <strong>Imagen:</strong>
                             {{ $platillo->imagen }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Descripcion:</strong>
+                            {{ $platillo->descripcion }}
                         </div>
 
                     </div>

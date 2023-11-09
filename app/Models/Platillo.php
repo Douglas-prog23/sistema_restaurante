@@ -46,18 +46,18 @@ class Platillo extends Model
 		'descripcion' => 'required',
         ];
     }
-      public static function updateRules($id)
-      {
-          return [
-            'nombre' => 'required|unique:platillos,nombre'. $id,
-		'categoria' => 'required',
-		'precio' => 'required',
-		'estado' => 'required',
-		'stock' => 'required',
-		'imagen' => 'required',
-		'descripcion' => 'required',
-          ];
-      }
+    public static function updateRules($id)
+    {
+        return [
+            'nombre' => 'required|unique:platillos,nombre,' . $id,
+            'categoria' => 'required',
+            'precio' => 'required',
+            'estado' => 'required',
+            'stock' => 'required',
+            'imagen' => 'sometimes|image', // La imagen es opcional, pero si se envía, debe ser una imagen válida
+            'descripcion' => 'required',
+        ];
+    }
 
     protected $perPage = 20;
 

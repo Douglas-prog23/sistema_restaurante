@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedido;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 /**
@@ -93,7 +94,18 @@ class PedidoController extends Controller
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido updated successfully');
     }
+    public function actualizarEstado(Request $request, Pedido $pedido)
+    {
+        // $request->validate([
+        //     'estado' => 'required|in:Pendiente,Confirmado,Enviado,Entregado',
+        // ]);
+        request()->validate(Pedido::$rules);
+        $pedido->update([
+            'estado' => $request->estado,
+        ]);
 
+        return redirect()->route('pedidos.index')->with('success', 'Estado del pedido actualizado correctamente.');
+    }
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse

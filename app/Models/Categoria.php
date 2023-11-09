@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $nombre
  * @property $descripcion
- * @property $slug
- * @property $imagen
  * @property $created_at
  * @property $updated_at
  *
@@ -21,12 +19,24 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Categoria extends Model
 {
-    
+  public static function storeRules()
+  {
+      return [
+          'nombre' => 'required|unique:categorias',
+          'descripcion' => 'required',
+      ];
+  }
+  
+  public static function updateRules($id)
+  {
+      return [
+          'nombre' => 'required|unique:categorias,nombre,' . $id,
+          'descripcion' => 'required',
+      ];
+  }
     static $rules = [
 		'nombre' => 'required',
 		'descripcion' => 'required',
-		'slug' => 'required',
-		'imagen' => 'required',
     ];
 
     protected $perPage = 20;
@@ -36,7 +46,7 @@ class Categoria extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','descripcion','slug','imagen'];
+    protected $fillable = ['nombre','descripcion'];
 
 
     /**

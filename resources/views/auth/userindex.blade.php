@@ -36,7 +36,6 @@ Admin|Usuarios
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Id User</th>
 										<th>Nombre</th>
 										<th>Apellido</th>

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('id_platillo')->unsigned();
             $table->foreign('id_platillo')->references('id')->on('platillos');
             $table->integer('cantidad');
-            $table->double('total');
             $table->timestamps();
         });
     }

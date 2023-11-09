@@ -12,10 +12,10 @@
             {!! $errors->first('categoria', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('precio') }}
-            {{ Form::text('precio', $platillo->precio, ['class' => 'form-control' . ($errors->has('precio') ? ' is-invalid' : ''), 'placeholder' => 'Precio']) }}
+            {{ Form::label('precio', 'Precio') }}
+            {{ Form::number('precio', $platillo->precio, ['step' => '0.01', 'class' => 'form-control' . ($errors->has('precio') ? ' is-invalid' : ''), 'placeholder' => 'Precio', 'inputmode' => 'numeric']) }}
             {!! $errors->first('precio', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div>        
         <div class="form-group">
             {{ Form::label('estado', 'Estado') }}
             {{ Form::select('estado', ['1' => 'Activo', '0' => 'Inactivo'], $platillo->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : '')]) }}
@@ -26,13 +26,14 @@
             {{ Form::number('stock', $platillo->stock, ['class' => 'form-control' . ($errors->has('stock') ? ' is-invalid' : ''), 'placeholder' => 'Stock']) }}
             {!! $errors->first('stock', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <br>
         <div class="form-group">
             {{ Form::label('imagen') }}
-            {{ Form::file('imagen', $platillo->imagen, ['class' => 'form-control' . ($errors->has('imagen') ? ' is-invalid' : '')]) }}
+            {{ Form::file('imagen', ['class' => 'form-control' . ($errors->has('imagen') ? ' is-invalid' : '')]) }}
+            @if ($platillo->imagen)
+                <img src="{{ asset($platillo->imagen) }}" alt="Imagen actual" class="img-thumbnail" width="100">
+            @endif
             {!! $errors->first('imagen', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <br>
         <div class="form-group">
             {{ Form::label('Descripcion') }}
             {{ Form::text('descripcion', $platillo->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'descripcion']) }}

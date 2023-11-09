@@ -37,9 +37,9 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 //rutas de los reportes
-Route::get('reporte', [App\Http\Controllers\ReportController::class, 'reporteUno'])->name('reporte');
-Route::get('reporte.reporte2', [App\Http\Controllers\ReportController::class, 'reporteDos'])->name('reporte2');
-Route::get('reporte.reporte3', [App\Http\Controllers\ReportController::class, 'reporteTres'])->name('reporte3');
+Route::get('reporte', '\App\Http\Controllers\ReportController@reporteUno')->name('reporte');
+Route::get('reporte2', [App\Http\Controllers\ReportController::class, 'reporteDos'])->name('reporte2');
+Route::get('reporte3', [App\Http\Controllers\ReportController::class, 'reporteTres'])->name('reporte3');
 //
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
@@ -59,6 +59,8 @@ Route::group(['middleware'=>['auth', 'checkRole:1,2']], function(){
     Route::get('usuario/{user}/edit', '\App\Http\Controllers\UsuarioController@edit')->name('usuario.edit');
     Route::put('usuario/{user}', '\App\Http\Controllers\UsuarioController@update')->name('usuario.update');
     Route::get('usuario', '\App\Http\Controllers\UsuarioController@index')->name('usuario.index');
+    Route::patch('/pedidos/{pedido}/actualizar-estado', [PedidoController::class, 'actualizarEstado'])
+    ->name('pedidos.estado');
     // Route::get('cursos', 'index')->name('curso.index');
     Route::resource('categorias',CategoriaController::class);
     Route::resource('mesas',MesaController::class);

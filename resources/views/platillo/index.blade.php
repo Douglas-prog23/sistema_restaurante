@@ -58,9 +58,15 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $platillo->nombre }}</td>
-											<td>{{ $platillo->categoria}}</td>
+											<td>{{ $platillo->category->nombre}}</td>
 											<td>{{ $platillo->precio }}</td>
-											<td>{{ $platillo->estado }}</td>
+											<td>
+                                                @if ($platillo->estado == 1)
+                                                    Activo
+                                                @else
+                                                    Inactivo
+                                                @endif
+                                            </td>
 											<td>{{ $platillo->stock }}</td>
 											<td>
                                                 <img src="{{asset($platillo->imagen)}}" alt="{{ $platillo->title }}" class="img-fluid img-thumbnail" width="100px" height="100px">

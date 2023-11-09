@@ -20,7 +20,7 @@
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('platillo.form')
+                            @include('platillo.formedit')
 
                         </form>
                     </div>

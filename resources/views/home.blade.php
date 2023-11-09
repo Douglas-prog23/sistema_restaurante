@@ -270,7 +270,7 @@
                             <div class="overlay">
                                 <h3>Plato:{{ $platillo->nombre }}</h3>
                                 <p>Categoria:{{ $platillo->category->nombre }}</p>
-                                <p>Descripción del Plato 1</p>
+                                <p>{{$platillo->descripcion}}</p>
                                 <p>Precio: ${{ $platillo->precio }}</p>
                             </div>
                         </div>
@@ -370,26 +370,14 @@
                                         <div class="card m-auto" style="width: 18rem;">
                                             <img class="card-img-top" src="{{ asset($platillo->imagen) }}"
                                                 alt="{{ $platillo->name }}" width="200" height="200">
+                                                <p>{{ $platillo->nombre }}</p>
                                             <div class="card-body">
-                                                <small
-                                                    class="card-txt-category">Categoria:{{ $platillo->category->nombre }}</small>
-                                                <h5 class="card-title my-2">{{ $platillo->category->descripcion }}</h5>
-                                                <div class="d-card-text">
-                                                    Esta es una de las mejores categorias de este restaurante
-                                                    tener en cuenta que para poder gozar de esta categoria
-                                                    hay {{-- que tener una menbresia exclusiva de el restaurante
-                                                    si aun no la tines dirijete al erente para que pueda darte mas
-                                                    informacion sobre esto
-                                                    gracias........... --}}......
-                                                </div>
-                                                <a href="#" class="post-link"><b>Leer mas</b></a>
+                                                <p class="card-txt-category" style="font-size: 15px">Categoria:{{ $platillo->category->nombre }}</p>
+                                                <p class="card-txt-category" style="font-size: 17px">{{ $platillo->descripcion }}</p>
                                                 <hr>
                                                 <div class="row">
-                                                    <div class="col-6 text-left">
-                                                        <span class="card-txt-author">Douglas</span>
-                                                    </div>
                                                     <div class="col-6 text-right">
-                                                        <span class="card-txt-date">Hace dos semanas</span>
+                                                        <span class="card-txt-date">{{$platillo->created_at->diffForHumans()}}</span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -142,11 +142,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('mesas.index') }}">MESAS</a>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('pedidos.index') }}">PEDIDOS</a>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('restaurantes.index') }}">RESTAURANTE</a>
                             </li>
