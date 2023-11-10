@@ -55,6 +55,7 @@ class Categoria extends Model
     public function platillos()
     {
         return $this->hasMany('App\Models\Platillo', 'categoria', 'id');
+        // return $this->hasMany(Platillo::class);
     }
     
 

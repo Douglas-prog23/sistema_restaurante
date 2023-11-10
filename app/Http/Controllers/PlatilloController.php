@@ -129,7 +129,13 @@ class PlatilloController extends Controller
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
-    public function menu(){
+    /**
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  Platillo $platillo
+     * @return \Illuminate\Http\Response
+     */
+    public function menu(Request $request){
         $categoria = Categoria::all();
         $platillo = Platillo::all();
         return view('menu',['categorias'=>$categoria,
@@ -137,6 +143,19 @@ class PlatilloController extends Controller
     ]);
     }
 
+    public function buscar(Request $request){
+        $buscar = $request->buscar;
+        $platillos = Platillo::where(function($query) use ($buscar){
+            $query->where('nombre','like',"%$buscar%")
+            ->orwhere('descripcion','like',"%$buscar%")
+            ->orwhere('precio','like',"%$buscar%");
+        })
+        ->orwhereHas('category',function($query) use($buscar){
+            $query->where('nombre','like',"%$buscar%");
+        })
+        ->get();
+        return view('menu',compact('buscar','platillos'));
+    }
     public function platilloCart()
     {
         return view('cart');

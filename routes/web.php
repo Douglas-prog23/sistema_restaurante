@@ -48,6 +48,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/menu', [App\Http\Controllers\PlatilloController::class, 'menu'])->name('menu');
+Route::get('/menu/buscar',[App\Http\Controllers\PlatilloController::class, 'buscar'])->name('buscar');
 Route::get('/shopping-cart', [PlatilloController::class, 'platilloCart'])->name('shopping.cart');
 Route::get('/menu/{id}', [App\Http\Controllers\PlatilloController::class, 'addPlatillotoCart'])->name('addplatillo.to.cart');
 Route::patch('/update-shopping-cart', [PlatilloController::class, 'updateCart'])->name('update.shopping.cart');
