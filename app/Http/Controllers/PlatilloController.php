@@ -127,6 +127,66 @@ class PlatilloController extends Controller
         return redirect()->route('platillos.index')
             ->with('success', 'Platillo Actualizado Satisfactoriamente.');
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    public function menu(){
+        $categoria = Categoria::all();
+        $platillo = Platillo::all();
+        return view('menu',['categorias'=>$categoria,
+        'platillos'=>$platillo
+    ]);
+    }
+
+    public function platilloCart()
+    {
+        return view('cart');
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addPlatillotoCart($id){
+        $platillo = Platillo::findOrFail ($id);
+        $cart = session()->get('cart',[]);
+        if(isset($cart[$id])) {
+            $cart[$id]['cantidad']++;
+        } else {
+            $cart[$id] = [
+                "nombre" => $platillo->nombre,
+                "cantidad" => 1,
+                "precio" => $platillo->precio,
+                "imagen" => $platillo->imagen
+            ];
+        }
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Producto añadido al Carrito!');
+    }
+
+    public function updateCart(Request $request)
+    {
+        if($request->id && $request->cantidad){
+            $cart = session()->get('cart');
+            $cart[$request->id]["cantidad"] = $request->cantidad;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Platillos Actualizados.');
+        }
+    }
+   
+    public function deleteProduct(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Platillo Eliminado de Carrito.');
+        }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * @param int $id

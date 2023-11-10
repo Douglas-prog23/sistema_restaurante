@@ -1,34 +1,7 @@
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.public')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Menú</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="/public/js/bootstrap.bundle.min.js.map">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css.map')}}">
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
-<link href="https://fonts.cdnfonts.com/css/nautilus-pompilius" rel="stylesheet">
+@section('title', 'Menu')
 <style>
-    /* ///////////////////////////// */
-    /* /////Importacion de fuente////////// */
-    @import url('https://fonts.cdnfonts.com/css/nautilus-pompilius');
-
-    body{
-      background: url('https://raw.githubusercontent.com/Douglas-prog23/sistema_restaurante/main/public/img/backgroudApp.jpg');
-      background-attachment:fixed;
-      background-size:cover;
-    }
     .title{
         padding-top: 10px;
         text-align: center;
@@ -40,15 +13,31 @@
                   1px 1px 0 black;
     }
   </style>
-<body>
-    <div id="app">
+@section('content')
             <h1 class="title">Menú</h1>
-        <main class="py-4">
-        </main>
-    </div>
+            @if(session('success'))
+        <div class="alert alert-success">
+          {{ session('success') }}
+        </div> 
+    @endif
+            <div class="container">
+              <div class="row">
+                @foreach ($platillos as $platillo)
+                    <div class="col-md-3 col-6 mb-4 ">
+                      <div class="card">
+                        <img class="card-img-top" src="{{ asset($platillo->imagen) }}" style="object-fit: cover; height: 200px;">
+                        <div class="card-body">
+                          <h4 class="card-title">{{$platillo->nombre}}</h4>
+                          <h5 class="card-subtitle"><strong>Categoria: </strong>{{$platillo->category->nombre}}</h5>
+                          <p>{{ Str::limit($platillo->descripcion, $limit = 62, $end = '...') }}</p>
+                          <p class="card-text"><strong>Precio: </strong>{{$platillo->precio}}</p>
+                          <p class="btn-holder"><a href="{{ route('addplatillo.to.cart', $platillo->id) }}" class="btn btn-outline-danger" role="button">Añadir a Carrito <i class="fa fa-shopping-cart" aria-hidden="true"></i></a></p>
+                        </div>
+                      </div>
+                    </div>
+                @endforeach
+              </div>
+            </div>
     {{-- <script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js.map')}}"></script> --}}
-</body>
-{{-- //////////////////////////////////////// --}}
-@include('layouts.footer')
-</html>
+@endsection

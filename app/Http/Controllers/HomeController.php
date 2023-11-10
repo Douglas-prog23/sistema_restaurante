@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
-use App\Models\Mesa;
 use App\Models\Platillo;
 use Illuminate\Http\Request;
 
@@ -28,15 +27,9 @@ class HomeController extends Controller
     {
         $categoria = Categoria::all();
         $platillo = Platillo::all();
+        $platillost = Platillo::take(3)->get();
         return view('home',['categorias'=>$categoria,
-        'platillos'=>$platillo
-    ]);
-    }
-    public function menu(){
-        $categoria = Categoria::all();
-        $platillo = Platillo::all();
-        return view('menu',['categorias'=>$categoria,
-        'platillos'=>$platillo
+        'platillos'=>$platillo, 'platillost'=>$platillost
     ]);
     }
 }

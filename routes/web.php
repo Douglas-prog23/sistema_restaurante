@@ -47,7 +47,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/menu', [App\Http\Controllers\HomeController::class, 'menu'])->name('menu');
+Route::get('/menu', [App\Http\Controllers\PlatilloController::class, 'menu'])->name('menu');
+Route::get('/shopping-cart', [PlatilloController::class, 'platilloCart'])->name('shopping.cart');
+Route::get('/menu/{id}', [App\Http\Controllers\PlatilloController::class, 'addPlatillotoCart'])->name('addplatillo.to.cart');
+Route::patch('/update-shopping-cart', [PlatilloController::class, 'updateCart'])->name('update.shopping.cart');
+Route::delete('/delete-cart-product', [PlatilloController::class, 'deleteProduct'])->name('delete.cart.product');
 Route::post('reservacione', '\App\Http\Controllers\ReservacioneController@storecli')->name('storecli');
 
 //Route::resource('/home',HomeController::class)->names('home');

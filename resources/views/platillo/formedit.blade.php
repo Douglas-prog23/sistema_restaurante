@@ -8,9 +8,9 @@
         </div>
         <div class="form-group">
             {{ Form::label('categoria') }}
-            {{ Form::select('categoria',$categorias, $platillo->id, ['class' => 'form-control' . ($errors->has('categoria') ? ' is-invalid' : ''), 'placeholder' => 'Categoria']) }}
+            {{ Form::select('categoria', $categorias, $platillo->categoria, ['class' => 'form-control' . ($errors->has('categoria') ? ' is-invalid' : ''), 'placeholder' => 'Categoria']) }}
             {!! $errors->first('categoria', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div>        
         <div class="form-group">
             {{ Form::label('precio', 'Precio') }}
             {{ Form::number('precio', $platillo->precio, ['step' => '0.01', 'class' => 'form-control' . ($errors->has('precio') ? ' is-invalid' : ''), 'placeholder' => 'Precio', 'inputmode' => 'numeric']) }}

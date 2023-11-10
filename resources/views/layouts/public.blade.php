@@ -19,6 +19,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <link href="https://fonts.cdnfonts.com/css/nautilus-pompilius" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
 <style>
     /* ///////////////////////////// */
     /* /////Importacion de fuente////////// */
@@ -40,7 +41,7 @@
         bottom: -50px;
     } */
     .navbar,
-    .dropdown-menu {
+    .perfil {
         background-color: rgba(0, 0, 0, 0.582);
         /* Fondo oscuro semitransparente */
 
@@ -80,6 +81,67 @@
         /* Al pasar el puntero, se anima el subrayado */
         transform-origin: bottom left;
     }
+    .car-drop{
+    float:right;
+    padding-right: 30px;
+}
+/* ---------- */
+.car-drop .dropdown-menu{
+    padding:20px;
+    top:30px !important;
+    width:350px !important;
+    left:-110px !important;
+    box-shadow:0px 5px 30px black;
+    --bs-dropdown-bg: #cdcecfe7;
+    --bs-btn-active-bg: #3c4247ce !important;
+}
+.car-drop .dropdown-menu:before{
+    content: " ";
+    position:absolute;
+    top:-20px;
+    right:50px;
+    border:10px solid transparent;
+    border-bottom-color:#fff;
+}
+ 
+.productlist {
+    box-shadow: 0px 10px 30px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ------------------------------ */
+.cart-detail{
+    padding:15px 0px;
+}
+.cart-detail-img img{
+    width:100%;
+    height:100%;
+    padding-left:15px;
+}
+.cart-detail-product p{
+    margin:0px;
+    color:#000;
+    font-weight:500;
+}
+.cart-detail .price{
+    font-size:15px;
+    margin-right:10px;
+    font-weight:500;
+}
+.cart-detail .count{
+    color:#000;
+}
+.text-info{
+    color: #000 !important;
+    font-weight: bold;
+    text-shadow: 0 0 4px #ff7010;
+}
+.btn-secondary{
+    --bs-btn-bg: #231a12ba;
+    --bs-btn-hover-bg: #6a685ca7;
+}
 </style>
 
 <body>
@@ -131,16 +193,52 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}#reservacion">RESERVACIONES</a>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" href="#comenta">COMENTA</a>
-                            </li> --}}
+                        {{-- <a href="{{ route('shopping.cart') }}" class="btn btn-outline-dark">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Carro<span class="badge bg-danger">{{ count((array) session('cart')) }}</span>
+                        </a> --}}
+                        
+                                <div class="dropdown car-drop text-nowrap">
+                                    <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <div class="row total-header-section">
+                                            @php $total = 0 @endphp
+                                            @foreach((array) session('cart') as $id => $details)
+                                                @php $total += $details['precio'] * $details['cantidad'] @endphp
+                                            @endforeach
+                                            <div class="col-lg-12 col-sm-12 col-12 total-section text-end">
+                                                <p>Total: <span class="text-info">$ {{ $total }}</span></p>
+                                            </div>
+                                        </div>
+                                        @if(session('cart'))
+                                            @foreach(session('cart') as $id => $details)
+                                                <div class="row cart-detail">
+                                                    <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+                                                        <img src="{{ $details['imagen'] }}" class="img-fluid img-thumbnail" width="100px" height="100px"/>
+                                                    </div>
+                                                    <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
+                                                        <p>{{ $details['nombre'] }}</p>
+                                                        <span class="price text-info"> ${{ $details['precio'] }}</span> <span class="count"> Cantidad:{{ $details['cantidad'] }}</span>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                                                <a href="{{ route('shopping.cart') }}" class="btn btn-secondary btn-block">Ver todo</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu perfil dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @if (auth()->user()->id_rol == 1 || auth()->user()->id_rol == 2)
                                         <a class="dropdown-item" href="{{ route('admin') }}">Area Admin</a>
                                     @endif
@@ -161,12 +259,13 @@
             </div>
         </nav>
 
+    </div>
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
     {{-- <script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script> --}}
     {{-- <script src="{{ asset('js/bootstrap.bundle.min.js.map')}}"></script> --}}
+    @yield('scripts')
 </body>
 {{-- //////////////////////////////////////// --}}
 @include('layouts.footer')

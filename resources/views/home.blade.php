@@ -263,14 +263,14 @@
             <div class="row">
                 <!-- Ejemplo de plato 1 -->
 
-                @foreach ($platillos as $platillo)
+                @foreach ($platillost as $platillo)
                     <div class="col-md-4 mb-4">
                         <div class="menu-item">
                             <img src="{{ asset($platillo->imagen) }}" alt="Plato 1" width="400" height="400">
                             <div class="overlay">
                                 <h3>Plato:{{ $platillo->nombre }}</h3>
                                 <p>Categoria:{{ $platillo->category->nombre }}</p>
-                                <p>{{$platillo->descripcion}}</p>
+                                <p>{{ Str::limit($platillo->descripcion, $limit = 62, $end = '...') }}</p>
                                 <p>Precio: ${{ $platillo->precio }}</p>
                             </div>
                         </div>
@@ -305,7 +305,7 @@
             // Agregar un manejador de eventos para redirigir al hacer clic
             boton.addEventListener("click", function() {
                 // Redirige a la URL deseada
-                window.location.href = "#menu1";
+                window.location.href = "{{ route('menu') }}";
             });
         </script>
     </div>
@@ -317,9 +317,12 @@
             <div class="menu-container">
                 <div class="menu-ct">
                     <button class="scroll-button left"><i class="fas fa-chevron-left"></i></button>
-                    @foreach ($categorias as $category)
-                        <p data-bs-target="#{{ $category->nombre }}">{{ $category->nombre }}</p>
-                    @endforeach
+                    @foreach ($platillos->groupBy('categoria') as $categoriaId => $platillosCategoria)
+                        @php
+                            $categoria = \App\Models\Categoria::find($categoriaId);
+                        @endphp
+                            <p data-bs-target="#{{ $categoria->nombre }}">{{ $categoria->nombre }}</p>
+                                @endforeach
                     <button class="scroll-button right"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
@@ -429,30 +432,7 @@
         </script>
 
     </section>
-
-@endauth
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</div>
+    <br><br>
 {{-- /////////////////////////////////////////////////////////////////// --}}
 {{-- <input style="font-weight: bold;" type="text" class="form-control" id="nombre" value="{{ Auth::user()->name }}" readonly> --}}
 {{-- ////////////////////////FORMULARIO RESERVACION//////////////////// --}}
@@ -527,6 +507,6 @@
         </div>
     </div>
 </div>
-
+@endauth
 <script src="{{ asset('js/home.js') }}"></script>
 @endsection
