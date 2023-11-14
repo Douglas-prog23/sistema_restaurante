@@ -38,7 +38,6 @@
                                         <th>No</th>
 										<th>Codigo</th>
 										<th>Cliente</th>
-                                        <th>Fecha Pedido</th>
                                         <th>Total</th>
 										<th>Estado</th>
                                         <th>Acciones</th>
@@ -55,8 +54,8 @@
                                             <tr>
                                                 <td>{{ ++$i }}</td>
                                                 <td>{{ $pedido->codigo }}</td>
-                                                <td>{{ $pedido->usuario->nombre }}</td>
-                                                <td>{{ $pedido->created_at->diffForHumans() }}</td>
+                                                <td>{{ $pedido->id_cliente}}</td>
+                                                <td>{{ $pedido->total}}</td>
                                                 <td>{{ $pedido->estado }}</td>
                                                 <td>
                                                     <form action="{{ route('pedidos.estado', $pedido->id) }}" method="POST">

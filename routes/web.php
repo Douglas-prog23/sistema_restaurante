@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('reporte', '\App\Http\Controllers\ReportController@reporteUno')->name('reporte');
 Route::get('reporte2', [App\Http\Controllers\ReportController::class, 'reporteDos'])->name('reporte2');
 Route::get('reporte3', [App\Http\Controllers\ReportController::class, 'reporteTres'])->name('reporte3');
+Route::get('reporte4', [App\Http\Controllers\ReportController::class, 'reporteCuatro'])->name('reporte4');
 //
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
@@ -50,8 +51,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/menu', [App\Http\Controllers\PlatilloController::class, 'menu'])->name('menu');
 Route::get('/shopping-cart', [PlatilloController::class, 'platilloCart'])->name('shopping.cart');
 Route::get('/menu/{id}', [App\Http\Controllers\PlatilloController::class, 'addPlatillotoCart'])->name('addplatillo.to.cart');
+///ruta para almacenar pedidos en la base de datos tabla pedidos
+// Route::get('/menu/{id}', [App\Http\Controllers\PedidoController::class, 'create'])->name('addplatillo.to.cart');
+///
 Route::patch('/update-shopping-cart', [PlatilloController::class, 'updateCart'])->name('update.shopping.cart');
-Route::delete('/delete-cart-product', [PlatilloController::class, 'deleteProduct'])->name('delete.cart.product');
+Route::delete('/delete-cart-product/codigo', [PlatilloController::class, 'deleteProduct'])->name('delete.cart.product');
 Route::post('reservacione', '\App\Http\Controllers\ReservacioneController@storecli')->name('storecli');
 
 //Route::resource('/home',HomeController::class)->names('home');

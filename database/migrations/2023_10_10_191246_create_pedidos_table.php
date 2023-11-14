@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->string('codigo',10)->unique();
+            $table->string('id_platillo',10);
             $table->bigInteger('id_cliente')->unsigned();
             $table->string('direccion');
             $table->foreign('id_cliente')->references('id')->on('users');

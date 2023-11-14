@@ -22,16 +22,16 @@ class Categoria extends Model
   public static function storeRules()
   {
       return [
-          'nombre' => 'required|unique:categorias',
-          'descripcion' => 'required',
+          'nombre' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:20|unique:categorias',
+          'descripcion' => 'required|regex:/^[\pL\s\-]+$/u|min:20|max:200|',
       ];
   }
   
   public static function updateRules($id)
   {
       return [
-          'nombre' => 'required|unique:categorias,nombre,' . $id,
-          'descripcion' => 'required',
+          'nombre' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:20|unique:categorias,nombre,' . $id,
+          'descripcion' => 'required|regex:/^[\pL\s\-]+$/u|min:20|max:200|',
       ];
   }
     static $rules = [

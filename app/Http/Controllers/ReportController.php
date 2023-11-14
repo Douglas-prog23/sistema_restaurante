@@ -7,6 +7,7 @@ use App\Models\Categoria;
 use App\Models\Mesa;
 use App\Models\Platillo;
 use App\Models\Reservacione;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -56,6 +57,25 @@ class ReportController extends Controller
     $pdf = PDF::loadView('reporte.reporte3',compact('data'));
 
     return $pdf->download('Reporte_de_mesas.pdf');
+           
+    
+    }
+
+    public function reporteCuatro() { 
+
+      $data = User::select( 
+        'users.id',
+        "users.name", 
+        "users.lastname",   
+        "users.email",
+        "users.username",
+        'users.telephone',
+        'users.id_rol',
+        "roles.nombre as id_rol")->join   ("roles",  "roles.id", "="  ,  "users.id_rol") ->get();
+
+    $pdf = PDF::loadView('reporte.reporte4',compact('data'));
+
+    return $pdf->download('Reporte_de_usuarios.pdf');
            
     
     }
