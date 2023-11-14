@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd4f1ee5a750f8645a0d16f69aad01f0170d522b2',
+        'reference' => 'f8ee71b8ced092c7efa277dc1c4aa2b3267f3dc1',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -51,6 +51,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'darryldecode/cart' => array(
+            'pretty_version' => '4.2.4',
+            'version' => '4.2.4.0',
+            'reference' => '25e347f89aecb20e769e228f10e62fa3d770e75d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../darryldecode/cart',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'davedevelopment/hamcrest-php' => array(
             'dev_requirement' => true,
@@ -499,7 +508,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd4f1ee5a750f8645a0d16f69aad01f0170d522b2',
+            'reference' => 'f8ee71b8ced092c7efa277dc1c4aa2b3267f3dc1',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1416,9 +1425,9 @@
             ),
         ),
         'symfony/uid' => array(
-            'pretty_version' => 'v6.3.0',
-            'version' => '6.3.0.0',
-            'reference' => '01b0f20b1351d997711c56f1638f7a8c3061e384',
+            'pretty_version' => 'v6.3.8',
+            'version' => '6.3.8.0',
+            'reference' => '819fa5ac210fb7ddda4752b91a82f50be7493dd9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/uid',
             'aliases' => array(),

@@ -25,6 +25,7 @@ class Pedido extends Model
 {
     
     static $rules = [
+        'id_platillo'=> 'required',
 		'codigo' => 'required',
 		'id_cliente' => 'required|exists:users,id',
 		'total' => 'required',
@@ -38,7 +39,7 @@ class Pedido extends Model
      *
      * @var array
      */
-    protected $fillable = ['codigo','id_cliente','total','estado'];
+    protected $fillable = ['id_platillo','codigo','id_cliente','total','estado'];
 
 
     /**

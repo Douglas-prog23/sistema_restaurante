@@ -88,7 +88,9 @@
                 method: "DELETE",
                 data: {
                     _token: '{{ csrf_token() }}', 
-                    id: ele.parents("tr").attr("rowId")
+                    id: ele.parents("tr").attr("rowId"),
+                    codigo: ele.parents("tr").find(".codigo").val()
+                   
                 },
                 success: function (response) {
                     window.location.reload();

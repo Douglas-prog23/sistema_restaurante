@@ -37,19 +37,19 @@ class Platillo extends Model
     public static function storeRules()
     {
         return [
-            'nombre' => 'required|unique:platillos,nombre',
+            'nombre' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:30|unique:platillos,nombre',
 		'categoria' => 'required',
 		'precio' => 'required',
 		'estado' => 'required',
 		'stock' => 'required',
 		'imagen' => 'required',
-		'descripcion' => 'required',
+		'descripcion' => 'required|regex:/^[\pL\s\-]+$/u|min:20|max:200|',
         ];
     }
     public static function updateRules($id)
     {
         return [
-            'nombre' => 'required|unique:platillos,nombre,' . $id,
+            'nombre' => 'required|regex:/^[\pL\s\-]+$/u|min:5|max:30|unique:platillos,nombre,' . $id,
             'categoria' => 'required',
             'precio' => 'required',
             'estado' => 'required',

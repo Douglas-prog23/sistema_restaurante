@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 
+
 use App\Models\Categoria;
 use App\Models\Platillo;
+use App\Models\Pedido;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth;
+use App\Models\User;
+use App\Models\Usuario;
 
 /**
  * Class PlatilloController
@@ -179,9 +185,39 @@ class PlatilloController extends Controller
                 "imagen" => $platillo->imagen
             ];
         }
+
+// Generar un código único
+
+$codigoGenerado = $this->generateUniqueCode();
+
+    
+      Pedido::create([
+            'id_platillo'=>$platillo->id,
+            'codigo'=>$codigoGenerado,
+            'id_cliente'=>1,
+          'total'=>$platillo->precio,
+      'estado'=>$platillo->estado,
+        ]);
+        
+
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Producto añadido al Carrito!');
     }
+    
+      
+     //funcion para generar codigo unicos que no sean randon y que lleven una seceuncia como h001,h002
+     public static function generateUniqueCode(){
+        $lastRecord = DB::table('pedidos')->latest()->first();
+          if (!empty($lastRecord)){
+            $code = substr($lastRecord->codigo, 1) + 1 ;
+            return 'h'.sprintf("%03d", $code);
+          }else{
+            return 'h001';
+            }
+      }
+     
+
+     
 
     public function updateCart(Request $request)
     {
@@ -195,23 +231,21 @@ class PlatilloController extends Controller
    
     public function deleteProduct(Request $request)
     {
-        if($request->id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('success', 'Platillo Eliminado de Carrito.');
-        }
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
+         //Eiliminar el pedido de la base de datos atraves de codigo y del carrito al mismo tiempo
+         $product = Pedido::where("id_platillo","=",$request->id)->delete();
+         
+         $cart = session()->get('cart');
+         if(isset($cart[$request->id])){
+            unset($cart[$request->id]);
+             session()->put('cart', $cart);
+         }
+         else{
+            session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Producto añadido al Carrito!');
+         }
+      
+    }   
+      
     public function destroy($id)
     {
         $platillo = Platillo::find($id)->delete();

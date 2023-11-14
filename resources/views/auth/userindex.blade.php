@@ -21,6 +21,12 @@ Admin|Usuarios
                                   {{ __('Nuevo Usuario') }}
                                 </a>
                               </div>
+
+                              <div class="float-right">
+                                <a href="{{ route('reporte4') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Generar Reporte') }}
+                                </a>
+                              </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
