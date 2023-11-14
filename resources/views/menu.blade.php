@@ -15,6 +15,12 @@
   </style>
 @section('content')
             <h1 class="title">Menú</h1>
+            <div class="d-flex justify-content-center my-3">
+              <form class="d-flex" role="search" action="{{route('buscar')}}" method="get" style="width: 40%; background: rgba(0, 0, 0, 0.624); padding:10px;">
+                  <input class="form-control me-2" type="search" name="buscar" placeholder="Buscar Platillo" value="{{isset($buscar) ? $buscar : ''}}" aria-label="Search">
+                  <button class="btn btn-success" type="submit">Buscar</button>
+              </form>
+          </div>
             @if(session('success'))
         <div class="alert alert-success">
           {{ session('success') }}

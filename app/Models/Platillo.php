@@ -79,6 +79,7 @@ class Platillo extends Model
     
     public function category(){
         return $this->belongsTo('App\Models\Categoria', 'categoria','id');
+        // return $this->belongsTo(Categoria::class);
     }
     
     /**
