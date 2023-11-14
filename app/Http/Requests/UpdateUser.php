@@ -23,12 +23,24 @@ class UpdateUser extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:100'],
-            'lastname' => ['required', 'string', 'max:100'],
-            'username' => 'required|unique:users,username,' .$this->user->id,
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users,email,' .$this->user->id],
-            'telephone' => 'required',
+            'name' => ['required', 'string','regex:/^[^\d]+$/', 'max:50'],
+            'lastname' =>['required', 'string','regex:/^[^\d]+$/', 'max:50'],
+            'username' =>'required|max:20|regex:/^[^\s]+$/|unique:users,username,' .$this->user->id,
+            'email' => 'required|string|email|regex:/^[^\s]+$/|max:40|unique:users,email,' .$this->user->id,
+            'telephone' => 'required|min:8', /* |digits:8| */
 
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'username.unique' => 'Este nombre de usuario ya existe.(No disponible)',
+            'username.regex' => 'El campo username no debe contener espacios en blanco.',
+            'email.regex' => 'El campo Email no debe contener espacios.',
+            'email.unique' => 'Correo electronico ya registrado.(No disponible)',
+            'name.regex' => 'El campo Nombres no debe contener numeros.',
+            'lastname.regex' => 'El campo Apellidos no debe contener numeros.',
+            'lastname.max' => 'El campo Apellidos no debe ser mayor que 50 caracteres.',
         ];
     }
 }

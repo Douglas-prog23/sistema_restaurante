@@ -25,6 +25,33 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Reservacione extends Model
 {
+    public static function storeRules()
+  {
+      return [
+        'id_cliente' => 'required',
+		'id_mesa' => 'required',
+		'fecha' => 'required|date|after_or_equal:today',
+		'num_personas' => 'required|integer|min:1|max:10',
+		'ocasion' => 'required',
+		'comentario' => 'nullable|string',
+		'hora' => 'required|date_format:H:i|after_or_equal:08:00|before:20:00',
+		'estado' => 'required',
+      ];
+  }
+  
+  public static function updateRules()
+  {
+      return [
+        'id_cliente' => 'required',
+		'id_mesa' => 'required',
+		'fecha' => 'required|date',
+		'num_personas' => 'required|integer|min:1|max:10',
+		'ocasion' => 'required',
+		'comentario' => 'nullable|string',
+		'hora' => 'required|date_format:H:i|after_or_equal:08:00|before:20:00',
+		'estado' => 'required',
+      ];
+  }
     
     static $rules = [
 		'id_cliente' => 'required',

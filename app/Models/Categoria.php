@@ -22,7 +22,7 @@ class Categoria extends Model
   public static function storeRules()
   {
       return [
-          'nombre' => 'required|unique:categorias',
+          'nombre' => 'required|min:5|max:20|unique:categorias',
           'descripcion' => 'required',
       ];
   }
@@ -30,7 +30,7 @@ class Categoria extends Model
   public static function updateRules($id)
   {
       return [
-          'nombre' => 'required|unique:categorias,nombre,' . $id,
+          'nombre' => 'required|min:5|max:20|unique:categorias,nombre,' . $id,
           'descripcion' => 'required',
       ];
   }

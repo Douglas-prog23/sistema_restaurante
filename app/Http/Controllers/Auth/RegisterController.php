@@ -51,15 +51,25 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:100'],
-            'lastname' =>['required', 'string', 'max:100'],
-            'username' =>'required|unique:users,username',
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'name' => ['required', 'string','regex:/^[^\d]+$/', 'max:50'],
+            'lastname' =>['required', 'string','regex:/^[^\d]+$/', 'max:50'],
+            'username' =>'required|max:20|regex:/^[^\s]+$/|unique:users,username',
+            'email' => ['required', 'string','regex:/^[^\s]+$/', 'email', 'max:40', 'unique:users'],
             'telephone' =>'required',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'password_confirmation' =>'required|same:password',
-        ]);
+        ],$this->customValidationMessages());
     }
+    protected function customValidationMessages()
+{
+    return [
+        'username.regex' => 'El campo username no debe contener espacios.',
+        'email.regex' => 'El campo Email no debe contener espacios.',
+        'name.regex' => 'El campo Nombres no debe contener numeros.',
+        'lastname.regex' => 'El campo Apellidos no debe contener numeros.',
+        'lastname.max'=>'El campo Apellidos no debe ser mayor que 50 caracteres.',
+    ];
+}
 
     /**
      * Create a new user instance after a valid registration.

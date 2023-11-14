@@ -60,7 +60,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $reservacione->usuario->name }}</td>
-											<td>{{ $reservacione->mesa->num_mesa }}</td>
+											<td>{{ $reservacione->mesa ? $reservacione->mesa->num_mesa : '' }}</td>
 											<td>{{ $reservacione->fecha }}</td>
 											<td>{{ $reservacione->num_personas }}</td>
 											<td>{{ $reservacione->ocasion }}</td>
@@ -73,7 +73,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('reservaciones.edit',$reservacione->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro de eliminar esta reservacion?'); false"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

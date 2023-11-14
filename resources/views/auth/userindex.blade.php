@@ -59,13 +59,13 @@ Admin|Usuarios
 											<td>{{ $user->telephone }}</td>
 											<td>{{ $user->rol->nombre }}</td>
                                             <td>
-                                                {{-- <form action="{{ route('usuario.destroy',$reservacione->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('usuario.show',$reservacione->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a> --}}
+                                                <form action="{{ route('usuario.destroy',$user->id) }}" method="POST">
+                                                    {{-- <a class="btn btn-sm btn-primary " href="{{ route('usuario.show',$reservacione->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Mostrar') }}</a> --}}
                                                     <a class="btn btn-sm btn-success" href="{{ route('usuario.edit',$user) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
-                                                    {{-- @csrf
+                                                    @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
-                                                </form> --}}
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro de eliminar este Usuario?'); false"><i class="fa fa-fw fa-trash" ></i> {{ __('Eliminar') }}</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

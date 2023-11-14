@@ -49,7 +49,7 @@ class PedidoController extends Controller
         $pedido = Pedido::create($request->all());
 
         return redirect()->route('pedidos.index')
-            ->with('success', 'Pedido created successfully.');
+            ->with('success', 'Pedido Creado con Exito.');
     }
 
     /**
@@ -92,7 +92,7 @@ class PedidoController extends Controller
         $pedido->update($request->all());
 
         return redirect()->route('pedidos.index')
-            ->with('success', 'Pedido updated successfully');
+            ->with('success', 'Pedido Actualizado con Exito');
     }
     public function actualizarEstado(Request $request, Pedido $pedido)
     {
@@ -116,6 +116,6 @@ class PedidoController extends Controller
         $pedido = Pedido::find($id)->delete();
 
         return redirect()->route('pedidos.index')
-            ->with('success', 'Pedido deleted successfully');
+            ->with('success', 'Pedido Eliminado con Exito');
     }
 }

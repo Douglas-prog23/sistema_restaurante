@@ -38,7 +38,7 @@ box-shadow:  1px 1px 5px 3px rgba(255, 255, 255, 0.2);">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                                            <label class="form-label" for="form2Example11">Correo Electronico</label>
+                                            <label class="form-label" for="form2Example11">Correo | Username</label>
                                         </div>
 
                                         <div class="form-floating mb-3"> <!-- Redujimos de mb-4 a mb-3-->

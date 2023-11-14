@@ -124,10 +124,11 @@
                             @endif
                         @endguest
                         @auth
-
+                        @if(auth()->user()->id_rol !== 2)
                             <li class="nav-item">
                                 <a class="nav-link text-nowrap" href="{{ route('usuario.index') }}">USUARIOS</a>
                             </li>
+                        @endif
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('categorias.index') }}">CATEGORIAS</a>
                             </li>

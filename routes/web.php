@@ -58,12 +58,16 @@ Route::post('reservacione', '\App\Http\Controllers\ReservacioneController@storec
 //Route::resource('/home',HomeController::class)->names('home');
 
 //routas para la categorias
-Route::group(['middleware'=>['auth', 'checkRole:1,2']], function(){
+Route::group(['middleware'=>['auth', 'checkRole:1']], function(){
     Route::get('usuario/create', '\App\Http\Controllers\UsuarioController@create')->name('usuario.create');
     Route::post('usuario', '\App\Http\Controllers\UsuarioController@store')->name('usuario.save');
     Route::get('usuario/{user}/edit', '\App\Http\Controllers\UsuarioController@edit')->name('usuario.edit');
     Route::put('usuario/{user}', '\App\Http\Controllers\UsuarioController@update')->name('usuario.update');
     Route::get('usuario', '\App\Http\Controllers\UsuarioController@index')->name('usuario.index');
+    Route::delete('usuario/{user}', '\App\Http\Controllers\UsuarioController@destroy')->name('usuario.destroy');
+});
+Route::group(['middleware'=>['auth', 'checkRole:1,2']], function(){
+    
     Route::patch('/pedidos/{pedido}/actualizar-estado', [PedidoController::class, 'actualizarEstado'])
     ->name('pedidos.estado');
     // Route::get('cursos', 'index')->name('curso.index');
@@ -79,7 +83,7 @@ Route::group(['middleware'=>['auth', 'checkRole:1,2']], function(){
        })->name('admin');
 });
 
-//rutas para los platillos
+//rutas para los platillo
 Route::resource('detalle-pedidos',DetallePedidoController::class);
 
 Route::resource('detalle-platillos',DetallePlatilloController::class);

@@ -48,14 +48,13 @@ class ReservacioneController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Reservacione::$rules);
+        request()->validate(Reservacione::storeRules());  
 
         $reservacione = Reservacione::create($request->all());
 
         return redirect()->route('reservaciones.index')
             ->with('success', 'Reservacion Creada Exitosamente.');
     }
-
 
     public function storecli(Request $request)
     {
@@ -103,12 +102,12 @@ class ReservacioneController extends Controller
     public function update(Request $request, Reservacione $reservacione)
     {
         
-        request()->validate(Reservacione::$rules);
+        request()->validate(Reservacione::updateRules());
 
         $reservacione->update($request->all());
 
         return redirect()->route('reservaciones.index')
-            ->with('success', 'Reservacione updated successfully');
+            ->with('success', 'Reservacion actualizada con exito');
     }
 
     /**
@@ -121,6 +120,6 @@ class ReservacioneController extends Controller
         $reservacione = Reservacione::find($id)->delete();
 
         return redirect()->route('reservaciones.index')
-            ->with('success', 'Reservacione deleted successfully');
+            ->with('success', 'Reservacion eliminada con exito');
     }
 }

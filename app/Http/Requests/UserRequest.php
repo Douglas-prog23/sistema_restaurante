@@ -22,13 +22,24 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:100'],
-            'lastname' =>['required', 'string', 'max:100'],
-            'username' =>'required|unique:users,username',
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
-            'telephone' =>'required',
+            'name' => ['required', 'string','regex:/^[^\d]+$/', 'max:50'],
+            'lastname' =>['required', 'string','regex:/^[^\d]+$/', 'max:50'],
+            'username' =>'required|max:20|regex:/^[^\s]+$/|unique:users,username',
+            'email' => ['required', 'string','regex:/^[^\s]+$/', 'email', 'max:40', 'unique:users'],
+            'telephone' =>'required|min:8',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'password_confirmation' =>'required|same:password',
         ];
     }
+    public function messages(): array
+{
+    return [
+        'username.unique' => 'Este nombre de usuario ya existe.(No disponible)',
+        'username.regex' => 'El campo username no debe contener espacios en blanco.',
+        'email.regex' => 'El campo Email no debe contener espacios.',
+        'email.unique' => 'Correo electronico ya registrado.(No disponible)',
+        'name.regex' => 'El campo Nombres no debe contener numeros.',
+        'lastname.regex' => 'El campo Apellidos no debe contener numeros.',
+    ];
+}
 }
